@@ -1,0 +1,6 @@
+@CurriculumVitae.Server_HostAddress = http://localhost:5215
+
+GET {{CurriculumVitae.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

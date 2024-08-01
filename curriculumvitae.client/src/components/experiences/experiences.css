@@ -1,0 +1,20 @@
+.exp-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.exp:hover {
+    border-top: 1px solid #0cbc33;
+    border-bottom: 1px solid #0cbc33;
+}
+
+.exp-header {
+    font-size: 1.5rem;
+}
+
+.exp-company {
+    background: purple;
+}
+
+.exp-description {
+}

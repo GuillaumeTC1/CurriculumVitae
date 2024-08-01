@@ -1,0 +1,20 @@
+.edu-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.edu:hover {
+    border-top: 1px solid #0cbc33;
+    border-bottom: 1px solid #0cbc33;
+}
+
+.edu-header {
+    font-size: 1.5rem;
+}
+
+.edu-school {
+    background: purple;
+}
+
+.edu-description {
+}
