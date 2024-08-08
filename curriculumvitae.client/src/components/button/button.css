@@ -1,0 +1,50 @@
+.btn {
+    width: fit-content;
+    max-width: min(100%, 100vw);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    appearance: button;
+    user-select: none;
+    text-transform: capitalize;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    padding: max(0.5em, 0.5rem) max(1.5em, 1.5rem);
+    font-size: clamp(0.875rem, 0.7220363289rem + 0.7648183556vw, 1.375rem);
+    box-shadow: 0 0 0 -0.4em hsl(0, 0%, 100%), 0 0 0 -0.6em rgba(13, 109, 253, 0.7);
+    transition: box-shadow 400ms cubic-bezier(0.66, -0.2, 0.27, 1.15);
+}
+
+    .btn:active,
+    .btn:hover {
+        opacity: 0.7;
+    }
+
+        .btn:hover i {
+            transform: rotate(360deg);
+            transition: transform .5s cubic-bezier(.7, 0.1, .3, 1);
+        }
+
+    .btn:focus-visible {
+        box-shadow: 0 0 0 0.3em hsl(0, 0%, 100%), 0 0 0 0.5em rgba(13, 109, 253, 0.7);
+    }
+
+    .btn:focus {
+        outline: none;
+    }
+
+@supports not (font-size: clamp(0.875rem, 0.7rem + 0.7vw, 1.375rem)) {
+    .btn {
+        font-size: 1rem;
+    }
+}
+
+@supports not (width: fit-content) {
+    .btn {
+        width: auto;
+    }
+}

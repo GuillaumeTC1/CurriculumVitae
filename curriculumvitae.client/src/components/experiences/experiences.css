@@ -9,12 +9,23 @@
 }
 
 .exp-header {
+    display: flex;
+    gap: 3vw;
+    align-items: center;
     font-size: 1.5rem;
 }
 
-.exp-company {
-    background: purple;
+.exp-logo {
+    height: 7vh;
+    width: 7vw;
+}
+
+.exp-duration {
+    display: flex;
+    gap: 5px;
+    margin-left: auto;
 }
 
 .exp-description {
+    text-align: justify;
 }

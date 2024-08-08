@@ -9,12 +9,27 @@
 }
 
 .edu-header {
+    display: flex;
+    gap: 3vw;
+    align-items: center;
     font-size: 1.5rem;
 }
 
+.edu-logo {
+    height: 7vh;
+    width: 7vw;
+}
+
 .edu-school {
-    background: purple;
+    
+}
+
+.edu-duration {
+    display: flex;
+    gap: 5px;
+    margin-left: auto;
 }
 
 .edu-description {
+    text-align: justify;
 }

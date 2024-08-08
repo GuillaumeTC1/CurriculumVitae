@@ -1,25 +1,11 @@
-.nav {
+#menu-top {
     display: flex;
-    gap: 5%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    background: #1e1e1e;
 }
 
-    .nav li {
-        flex-grow: 1;
-        padding: 20px;
-        text-align: center;
-        transition: 0.3s;
-    }
+.layout {
+    display: flex;
+}
 
-        .nav li:hover {
-            background: linear-gradient(#1e1e1e 80%, #0cbc33 100%);
-        }
-
-    .nav a {
-        color: #fafafa;
-        font: bold;
-        text-decoration: none;
-    }
+.content {
+    padding: 0 10%;
+}

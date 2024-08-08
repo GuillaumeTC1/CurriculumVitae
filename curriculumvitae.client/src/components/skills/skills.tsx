@@ -1,29 +1,22 @@
-import "./skills.css"
+import { ISkill, SkillTypes } from "../../models/iskill";
+import { Skill } from "./skill";
+import "./skills.css";
 
 export type SkillsProps = {
     skills: ISkill[];
+    type?: SkillTypes;
 };
 
 export const Skills = (props: SkillsProps) => {
 
     return (
         <div>
-            <h2>Skills</h2>
-            <h4>Softwares</h4>
-            <span>Visual Studio</span>
-            <span>VS Code</span>
-            <span>Azure</span>
-            <h4>Techs</h4>
-            <span>.NET</span>
-            <span>TypeScript</span>
-            <span>Python</span>
-            <h4>Project Managment</h4>
-            <span>Agile</span>
-            <h4>Languages</h4>
-            <span>French</span>
-            <span>English</span>
-            <span>Spanish</span>
-            <span>Japanese</span>
+            {props.skills
+                .filter(skill => props.type ? skill.type === props.type : true)
+                .map(skill => (
+                    <Skill key={crypto.randomUUID()}
+                        {...skill} />
+            ))}
         </div>
     );
 }    

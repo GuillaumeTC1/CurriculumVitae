@@ -9,7 +9,8 @@ export const Experiences = (props: ExperiencesProps) => {
     return (
         <div className="exp-container">
             {experiences.map(experience => (
-                <Experience {...experience} />
+                <Experience key={crypto.randomUUID()}
+                    {...experience} />
             ))}
         </div>
     );

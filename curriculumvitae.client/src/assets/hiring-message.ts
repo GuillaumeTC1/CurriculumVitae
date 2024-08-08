@@ -1,0 +1,1 @@
+export const hiringMessage = "Hello, I want to hire";

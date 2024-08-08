@@ -1,0 +1,46 @@
+.nav {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+    .nav li {
+        flex-grow: 1;
+    }
+
+    .nav a {
+        text-decoration: none;
+    }
+
+.nav-item {
+    padding: 20px;
+    color: #fafafa;
+    font-weight: bold;
+    text-align: center;
+    text-transform: capitalize;
+    transition: 0.3s;
+}
+    .nav-item:hover {
+        transform: scale(1.5);
+        transition-delay: .2s;
+        transition-duration: .5s;
+    }
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

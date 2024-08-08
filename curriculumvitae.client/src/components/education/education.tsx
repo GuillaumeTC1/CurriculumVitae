@@ -9,7 +9,8 @@ export const Education = (props: EducationProps) => {
     return (
         <div className="edu-container">
             {education.map(formation => (
-                <Formation {...formation} />
+                <Formation key={crypto.randomUUID()}
+                    {...formation} />
             ))}
         </div>   
     );

@@ -3,9 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurriculumVitae.Server", "CurriculumVitae.Server\CurriculumVitae.Server.csproj", "{B6E860CC-ADDC-46E1-9268-295416F64067}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurriculumVitae.Server", "CurriculumVitae.Server\CurriculumVitae.Server.csproj", "{B6E860CC-ADDC-46E1-9268-295416F64067}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "curriculumvitae.client", "curriculumvitae.client\curriculumvitae.client.esproj", "{B4B9B943-CBF9-411B-B115-E92EF7E37F74}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{C6784001-5792-4089-90D3-15BE58212D89}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
