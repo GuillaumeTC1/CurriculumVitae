@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurriculumVitae.Server", "C
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "curriculumvitae.client", "curriculumvitae.client\curriculumvitae.client.esproj", "{D6C7113F-83F5-4707-AD85-CFB0ABA70FFC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{C27A9A62-80D7-4E30-AFEE-E185AC89DC44}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

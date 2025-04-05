@@ -1,0 +1,57 @@
+[
+  {
+    "type": "software",
+    "detail": "Visual Studio",
+    "logoUrl": "./logos/skills/logo_visualstudio.png"
+  },
+  {
+    "type": "software",
+    "detail": "VS Code",
+    "logoUrl": "./logos/skills/logo_vscode.png"
+  },
+  {
+    "type": "software",
+    "detail": "Azure",
+    "logoUrl": "./logos/skills/logo_azure.png"
+  },
+  {
+    "type": "tech",
+    "detail": ".NET",
+    "logoUrl": "./logos/skills/logo_dotnet.png"
+  },
+  {
+    "type": "tech",
+    "detail": "TypeScript",
+    "logoUrl": "./logos/skills/logo_javascript.png"
+  },
+  {
+    "type": "tech",
+    "detail": "Python",
+    "logoUrl": "./logos/skills/logo_visualstudio.png"
+  },
+  {
+    "type": "management",
+    "detail": "Agile",
+    "logoUrl": "./logos/skills/logo_visualstudio.png"
+  },
+  {
+    "type": "language",
+    "detail": "French",
+    "logoUrl": "./logos/skills/logo_visualstudio.png"
+  },
+  {
+    "type": "language",
+    "detail": "English",
+    "logoUrl": "./logos/skills/logo_visualstudio.png"
+  },
+  {
+    "type": "language",
+    "detail": "Spanish",
+    "logoUrl": "./logos/skills/logo_visualstudio.png"
+  },
+  {
+    "type": "language",
+    "detail": "Japanese",
+    "logoUrl": "./logos/skills/logo_visualstudio.png"
+  }
+]

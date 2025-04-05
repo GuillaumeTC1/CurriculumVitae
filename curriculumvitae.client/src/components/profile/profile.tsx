@@ -1,62 +1,93 @@
-import { useNavigate } from "react-router-dom";
-import { Button } from "../button/button";
-import { Icon } from "../icon/icon";
-import "./profile.css";
-import { useAddToast } from "../toasts/context";
+import { Education } from "@/components/education/Education";
+import { Experiences } from "@/components/experiences/Experiences";
+import { Skills } from "@/components/skills/Skills";
+import { GithubOutlined, LinkedinOutlined } from "@ant-design/icons";
+import { Avatar, Button, Flex, Space, Tabs, TabsProps } from "antd";
+import "./Profile.css";
 
 export type ProfileProps = {
+    jobTitle: string;
+    description: string;
+    email: string;
     name: string;
-};
+    phone: string;
+    address: string;
+    birthDate: string;
+}
 
 export const Profile = (props: ProfileProps) => {
 
-    const navigate = useNavigate();
-    const notify = useAddToast();
+    const items: TabsProps['items'] = [
+        {
+            key: "1",
+            label: "Experiences",
+            children: <Experiences />,
+        },
+        {
+            key: "2",
+            label: "Education",
+            children: <Education />,
+        },
+        {
+            key: "3",
+            label: "Skills",
+            children: <Skills />,
+        },
+    ];
 
     return (
-        <div className="profile">
-            <div className="profile-header">
-                <img
-                    className="profile-picture"
-                    src="https://media.licdn.com/dms/image/C5603AQELV6axpp2wfA/profile-displayphoto-shrink_200_200/0/1570293340285?e=2147483647&v=beta&t=rTNHWmiM4Z60KncJtinfqJ4_eGnrhmBcD55TlIJKUTA" />
-                <div className="profile-titles">
+        <Flex className="profile"
+            vertical
+            gap="small">
+            <Flex className="profile-header"
+                align="center"
+                justify="space-between">
+                <Avatar
+                    size={100}
+                    src="https://media.licdn.com/dms/image/v2/D4E03AQGjbGaHuDiPBw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1731353082624?e=1745452800&v=beta&t=VtnOb2Wn4Zvl81lY8fVAcKk2xtllb4sAoEnBe3yLg-4" />
+                <Flex
+                    vertical
+                    align="flex-end">
                     <h3>Technical Lead</h3>
-                </div>
-            </div>
-            <p>
-                Graduated of software engineering (MEng) & computational graphics (MS) at 22 years old, I am now Tech Lead of web products and cloud solutions at L'Oréal R&I. After two years working for L’Oréal, I am looking for new challenges in a tech-oriented company.
-            </p>
-            <div className="profile-info">
-                <h2>Personnal Info</h2>
-                <span>**email**</span>
-                <span>Guillaume Thomas-Castelnau</span>
-                <span>**phone**</span>
-                <span>**address**</span>
-                <span>**birthday**</span>
-            </div>
-            <div className="profile-buttons">
-                <Button
-                    onClick={() => navigate("/contact?hire=true")}>
-                    <div>
-                        <Icon name="briefcase" />
-                        <div>Hire</div>
-                    </div>
-                </Button>
-                <Button
-                    onClick={() => notify({ id: crypto.randomUUID(), message: "LinkedIn!" })}>
-                    <div>
-                        <Icon name="earth" />
-                        <div>LinkedIn</div>
-                    </div>
-                </Button>
-                <Button
-                    onClick={() => notify({ id: crypto.randomUUID(), message: "GitHub!" })}>
-                    <div>
-                        <Icon name="earth" />
-                        <div>GitHub</div>
-                    </div>
-                </Button>
-            </div>
-        </div>  
+                    <p>{props.description}</p>
+                </Flex>
+            </Flex>
+            <Flex
+                justify="space-between"
+                gap="24px"
+                style={{ padding: "0 100px" }}>
+                <Tabs items={items} />
+                <Flex className="profile-info"
+                    vertical
+                    justify="flex-end">
+                    <h2>Personnal Info</h2>
+                    <Space direction="vertical">
+                        <span>{props.email}</span>
+                        <span>{props.name}</span>
+                        <span>{props.phone}</span>
+                        <span>{props.address}</span>
+                        <span>{props.birthDate}</span>
+                    </Space>
+                    <Space className="profile-buttons"
+                        direction="vertical">
+                        <Button
+                            icon={<i className="fa-solid fa-briefcase" />}
+                            href="/contact?hire=true">
+                            Hire
+                        </Button>
+                        <Button
+                            icon={<LinkedinOutlined />}
+                            href="https://www.linkedin.com/in/guillaume-thomas-castelnau/">
+                            LinkedIn
+                        </Button>
+                        <Button
+                            icon={<GithubOutlined />}
+                            href="https://github.com/GuillaumeTC1">
+                            GitHub
+                        </Button>
+                    </Space>
+                </Flex>
+            </Flex>
+        </Flex>  
     );
 }    

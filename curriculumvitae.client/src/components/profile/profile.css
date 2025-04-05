@@ -10,8 +10,8 @@
 }
 
 .profile-picture {
-    height: 10vh;
-    width: 10vh;
+    max-height: 100%;
+    max-width: auto;
     border-radius: 50%;
 }
 
