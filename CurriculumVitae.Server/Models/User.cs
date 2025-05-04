@@ -21,7 +21,7 @@ public class User
     public string Email { get; set; } = null!;
 
     [JsonPropertyName("email_verified")]
-    public string EmailVerified { get; set; }
+    public string? EmailVerified { get; set; }
 
     [JsonPropertyName("picture")]
     public string Picture { get; set; } = null!;

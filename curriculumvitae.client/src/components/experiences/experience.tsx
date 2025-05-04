@@ -1,14 +1,20 @@
+import "@/services/extensions/DateExtensions";
 import { useMemo } from "react";
-import { IExperience } from "../../models/iexperience";
-import "../../services/extensions/date-extensions"
-import "./experiences.css";
+import "./Experiences.css";
 
-export type ExperienceProps = IExperience & { };
+export type ExperienceProps = {
+    company: string
+    jobTitle: string
+    description: string
+    startDate: string;
+    endDate?: string;
+    logoUrl?: URL
+};
 
 export const Experience = (props: ExperienceProps) => {
 
     const logoUrl = useMemo(() => props.logoUrl ?? new URL(`https://cdn.brandfetch.io/${props.company}.com`), [props])
-    const duration = useMemo(() => props.startDate.duration(props.endDate), [props])
+    //const duration = useMemo(() => props.startDate.duration(props.endDate), [props])
 
     return (
         <div className="exp">
@@ -20,8 +26,8 @@ export const Experience = (props: ExperienceProps) => {
                 </div>   
                 <span className="job-title">{props.jobTitle}</span>
                 <div className="exp-duration">
-                    <span>{props.startDate.toLocaleDateString()} - {props.endDate?.toLocaleDateString() ?? "Now"}</span>
-                    <span>{`(${duration.years()}y ${duration.months()}m)`}</span>
+                    <span>{new Date(props.startDate).toLocaleDateString()} - {props.endDate ? new Date(props.endDate).toLocaleDateString() : "Now"}</span>
+                    {/*<span>{`(${duration.years()}y ${duration.months()}m)`}</span>*/}
                 </div>
             </div>
             <p className="exp-description">{props.description}</p>

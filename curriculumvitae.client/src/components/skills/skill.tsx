@@ -1,26 +1,29 @@
 import { useMemo } from "react";
-import { ISkill, SkillTypes } from "../../models/iskill";
-import "./skills.css";
+import "./Skills.css";
 
-export type SkillProps = ISkill & { }
+export type SkillProps = {
+    type: string;
+    detail: string;
+    logoUrl: string;
+}
 
 export const Skill = (props: SkillProps) => {
 
-    const logoUrl = useMemo(() => new URL(`https://cdn.brandfetch.io/${props.detail}.com`), [props])
+    const logoUrl = useMemo(() => props.logoUrl ?? new URL(`https://cdn.brandfetch.io/${props.detail}.com`), [props])
 
-    if (props.type === SkillTypes.Software) {
-
-    }
-
-    if (props.type === SkillTypes.Tech) {
+    if (props.type === "software") {
 
     }
 
-    if (props.type === SkillTypes.Management) {
+    if (props.type === "tech") {
 
     }
 
-    if (props.type === SkillTypes.Language) {
+    if (props.type === "management") {
+
+    }
+
+    if (props.type === "language") {
 
     }
 

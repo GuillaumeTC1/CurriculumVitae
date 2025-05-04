@@ -8,9 +8,12 @@ namespace CurriculumVitae.Server.Controllers;
 [ApiController]
 [Route("[controller]")]
 [Authorize]
-public class AuthController(ILogger<AuthController> logger) : ControllerBase
+public class AuthController(
+    ILogger<AuthController> logger) 
+    : ControllerBase
 {
     [HttpGet("ping")]
+    [ResponseCache(Duration = 60)]
     public ActionResult<User> Ping()
     {
         var user = new User()
@@ -28,9 +31,9 @@ public class AuthController(ILogger<AuthController> logger) : ControllerBase
     }
 
     [HttpPost("login")]
-    public ActionResult Login(ClaimsPrincipal user)
+    public ActionResult Login()
     {
-        return SignIn(user);
+        return SignIn(User);
     }
 
     [HttpPost("logout")]
@@ -40,9 +43,18 @@ public class AuthController(ILogger<AuthController> logger) : ControllerBase
     }
 
     [HttpGet("callback")]
-    public ActionResult Callback()
+    public ActionResult Callback([FromQuery] string code)
     {
-        Login(User);
+        SignIn(User);
+        logger.LogInformation("{} has signed in with {}.", User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Name)?.Value, User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Email)?.Value);
         return Redirect("/");
+    }
+
+    [HttpGet("linkedin")]
+    [AllowAnonymous]
+    public ActionResult LinkedIn()
+    {
+        return Redirect(
+            $"https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78x5jlbcl09xi1&redirect_uri=https://{HttpContext.Request.Host}/auth/callback&scope=openid%20profile");
     }
 }
