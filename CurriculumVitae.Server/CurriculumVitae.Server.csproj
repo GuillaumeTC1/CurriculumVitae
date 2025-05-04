@@ -6,13 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>3d11dbf4-72a3-4618-a895-f3b681a1d44b</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Remove="Data\education.json" />
-    <Content Remove="Data\experiences.json" />
-    <Content Remove="Data\skills.json" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.7" />

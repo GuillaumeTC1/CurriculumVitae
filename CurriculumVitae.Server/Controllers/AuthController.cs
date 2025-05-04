@@ -46,7 +46,7 @@ public class AuthController(
     public ActionResult Callback([FromQuery] string code)
     {
         SignIn(User);
-        logger.LogInformation("{} has signed in with {}.", User.Identity!.Name, User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Email)?.Value);
+        logger.LogInformation("{} has signed in with {}.", User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Name)?.Value, User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Email)?.Value);
         return Redirect("/");
     }
 
