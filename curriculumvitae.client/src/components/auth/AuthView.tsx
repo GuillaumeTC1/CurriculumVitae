@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuthContext } from './Context';
+import { useAuthContext } from './context';
 
 export type AuthViewProps = {
     children?: React.ReactNode

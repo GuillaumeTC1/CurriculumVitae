@@ -1,8 +1,7 @@
-import { useAsync } from "@/services/hooks/UseAsync";
-import { Spin } from "antd";
+import { useAsync } from "@/hooks/useAsync";
+import { Flex, Spin } from "antd";
 import axios from "axios";
 import { Experience, ExperienceProps } from "./Experience";
-import "./Experiences.css";
 
 export const Experiences = () => {
 
@@ -17,11 +16,12 @@ export const Experiences = () => {
     }
 
     return (
-        <div className="exp-container">
+        <Flex vertical
+            gap="8px">
             {experiences!.map(experience => (
                 <Experience key={crypto.randomUUID()}
                     {...experience} />
             ))}
-        </div>
+        </Flex>
     );
 }

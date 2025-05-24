@@ -1,6 +1,6 @@
 import { AuthProfile } from "@/components/auth/AuthProfile";
 import { MenuOutlined } from "@ant-design/icons";
-import { Layout as AntdLayout, Button, Drawer, Flex, Menu } from "antd";
+import { Layout as AntdLayout, Button, Drawer, Flex, FloatButton, Menu } from "antd";
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import "./Layout.css";
@@ -48,6 +48,7 @@ export const Layout = () => {
                         <Menu.Item key="/privacy">Privacy</Menu.Item>
                     </Menu>
                 </Drawer>
+                <FloatButton onClick={() => console.log('onClick')} />;
                 <Outlet />
             </AntdLayout.Content>
         </AntdLayout>

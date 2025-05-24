@@ -1,6 +1,6 @@
 import { AuthView } from "@/components/auth/AuthView";
 import { Page } from "@/components/page/Page";
-import { Profile } from "@/components/profile/Profile";
+import { Profile } from "@/components/resume/Resume";
 
 const HomePage = () => {
 

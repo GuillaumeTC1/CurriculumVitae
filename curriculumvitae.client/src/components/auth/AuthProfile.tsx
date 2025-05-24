@@ -1,7 +1,7 @@
 import { Button, Flex, Popover } from 'antd';
 import Avatar from 'antd/es/avatar/Avatar';
 import axios from 'axios';
-import { useAuthContext } from './Context';
+import { useAuthContext } from './context';
 
 export const AuthProfile = () => {
 

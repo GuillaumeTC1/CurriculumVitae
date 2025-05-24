@@ -1,11 +1,10 @@
-import { Education } from "@/components/education/Education";
-import { Experiences } from "@/components/experiences/Experiences";
-import { Skills } from "@/components/skills/Skills";
+import { useAuthContext } from "@/components/auth/context";
 import { GithubOutlined, LinkedinOutlined } from "@ant-design/icons";
 import { Avatar, Button, Flex, Space, Tabs, TabsProps, Tour, TourProps } from "antd";
 import { useRef, useState } from "react";
-import { useAuthContext } from "../auth/Context";
-import "./Profile.css";
+import { Education } from "./Education";
+import { Experiences } from "./Experiences";
+import { Skills } from "./Skills";
 
 export type ProfileProps = {
     jobTitle: string;
@@ -75,27 +74,14 @@ export const Profile = (props: ProfileProps) => {
                 vertical
                 gap="small">
                 <Flex className="profile-header"
-                    align="center"
-                    justify="space-between">
-                    <Avatar
-                        size={100}
-                        src="https://media.licdn.com/dms/image/v2/D4E03AQGjbGaHuDiPBw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1731353082624?e=1745452800&v=beta&t=VtnOb2Wn4Zvl81lY8fVAcKk2xtllb4sAoEnBe3yLg-4" />
-                    <Flex
-                        vertical
-                        align="flex-end">
-                        <h3>Technical Lead</h3>
-                        <p>{props.description}</p>
-                    </Flex>
-                </Flex>
-                <Flex
-                    justify="space-between"
                     gap="24px"
-                    style={{ padding: "0 100px" }}>
-                    <Tabs items={items} />
+                    style={{ padding: "24px 128px" }}>
                     <Flex ref={infoRef}
                         className="profile-info"
-                        vertical
-                        justify="flex-end">
+                        vertical>
+                        <Avatar
+                            size={100}
+                            src="./profile_picture.jfif" />
                         <h2>Personnal Info</h2>
                         <Space direction="vertical">
                             <span>{props.email}</span>
@@ -122,6 +108,12 @@ export const Profile = (props: ProfileProps) => {
                                 GitHub
                             </Button>
                         </Space>
+                    </Flex>
+                    <Flex
+                        vertical>
+                        <h3>Technical Lead</h3>
+                        <p>{props.description}</p>
+                        <Tabs items={items} />
                     </Flex>
                 </Flex>
             </Flex>  

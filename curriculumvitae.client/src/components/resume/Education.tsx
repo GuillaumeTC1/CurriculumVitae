@@ -1,7 +1,6 @@
-import { useAsync } from "@/services/hooks/UseAsync";
-import { Spin } from "antd";
+import { useAsync } from "@/hooks/useAsync";
+import { Flex, Spin } from "antd";
 import axios from "axios";
-import "./Education.css";
 import { Formation, FormationProps } from "./Formation";
 
 export type EducationProps = {};
@@ -19,11 +18,12 @@ export const Education = () => {
     }
 
     return (
-        <div className="edu-container">
+        <Flex vertical
+            gap="8px">
             {education!.map(formation => (
                 <Formation key={crypto.randomUUID()}
                     {...formation} />
             ))}
-        </div>   
+        </Flex>   
     );
 }

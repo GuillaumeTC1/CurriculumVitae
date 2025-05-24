@@ -1,4 +1,4 @@
-import { hiringMessage } from "@/assets/hiring-message";
+import { hiringMessage } from "@/assets/hiringMessage";
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Page } from "@/components/page/Page";

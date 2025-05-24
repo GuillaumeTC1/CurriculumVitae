@@ -1,5 +1,6 @@
 import { useMemo } from "react";
-import "./Skills.css";
+import Avatar from "antd/es/avatar/Avatar";
+import { Tooltip } from "antd";
 
 export type SkillProps = {
     type: string;
@@ -28,11 +29,11 @@ export const Skill = (props: SkillProps) => {
     }
 
     return (
-        <div className="skill">
-            <img
-                className="exp-logo"
+        <Tooltip title={props.detail}>
+            <Avatar
+                shape="square"
+                size="large"
                 src={logoUrl.toString()} />
-            <span>{props.detail}</span>
-        </div>
+        </Tooltip>
     );
 }    
