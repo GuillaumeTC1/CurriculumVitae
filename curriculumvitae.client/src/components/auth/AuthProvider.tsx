@@ -2,7 +2,7 @@ import { useAsync } from "@/hooks/useAsync";
 import { Spin } from "antd";
 import axios from "axios";
 import { useMemo } from "react";
-import { IUser } from "./Auth.types";
+import { IUser } from "./auth.types";
 import { AuthContext } from "./context";
 
 export type AuthProviderProps = {

@@ -1,9 +1,9 @@
+import { useAuthContext } from '@/components/auth/context';
 import { Button, Flex, Popover } from 'antd';
 import Avatar from 'antd/es/avatar/Avatar';
 import axios from 'axios';
-import { useAuthContext } from './context';
 
-export const AuthProfile = () => {
+export const Profile = () => {
 
     const authContext = useAuthContext();
 

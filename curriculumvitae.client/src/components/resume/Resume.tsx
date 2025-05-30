@@ -1,31 +1,28 @@
 import { useAuthContext } from "@/components/auth/context";
-import { GithubOutlined, LinkedinOutlined } from "@ant-design/icons";
-import { Avatar, Button, Flex, Space, Tabs, TabsProps, Tour, TourProps } from "antd";
+import { Avatar, Flex, Tabs, TabsProps, Tour, TourProps } from "antd";
 import { useRef, useState } from "react";
 import { Education } from "./Education";
 import { Experiences } from "./Experiences";
 import { Skills } from "./Skills";
 
-export type ProfileProps = {
+export type ResumeProps = {
     jobTitle: string;
     description: string;
     email: string;
     name: string;
-    phone: string;
-    address: string;
-    birthDate: string;
 }
 
-export const Profile = (props: ProfileProps) => {
+export const Resume = (props: ResumeProps) => {
 
     var authContex = useAuthContext();
 
     var [tourOpen, setTourOpen] = useState(true);
 
+    var infoRef = useRef(null);
     var experiencesRef = useRef(null);
     var educationRef = useRef(null);
-    var skillsRef = useRef(null);
-    var infoRef = useRef(null);
+    var personalsRef = useRef(null);
+    var awardsRef = useRef(null);
 
     const steps: TourProps['steps'] = [
         {
@@ -41,8 +38,8 @@ export const Profile = (props: ProfileProps) => {
             target: () => educationRef.current
         },
         {
-            title: '...and skills there',
-            target: () => skillsRef.current
+            title: '...and personnal projects there',
+            target: () => personalsRef.current
         },
         {
             title: 'Reach out',
@@ -63,60 +60,35 @@ export const Profile = (props: ProfileProps) => {
         },
         {
             key: "3",
-            label: <div ref={skillsRef}>Skills</div>,
+            label: <div ref={personalsRef}>Personnal Projects</div>,
+            children: <Skills />,
+        },
+        {
+            key: "4",
+            label: <div ref={awardsRef}>Awards</div>,
             children: <Skills />,
         },
     ];
 
     return (
         <>
-            <Flex className="profile"
-                vertical
-                gap="small">
-                <Flex className="profile-header"
-                    gap="24px"
-                    style={{ padding: "24px 128px" }}>
-                    <Flex ref={infoRef}
-                        className="profile-info"
-                        vertical>
-                        <Avatar
-                            size={100}
-                            src="./profile_picture.jfif" />
-                        <h2>Personnal Info</h2>
-                        <Space direction="vertical">
-                            <span>{props.email}</span>
-                            <span>{props.name}</span>
-                            <span>{props.phone}</span>
-                            <span>{props.address}</span>
-                            <span>{props.birthDate}</span>
-                        </Space>
-                        <Space className="profile-buttons"
-                            direction="vertical">
-                            <Button
-                                icon={<i className="fa-solid fa-briefcase" />}
-                                href="/contact?hire=true">
-                                Hire
-                            </Button>
-                            <Button
-                                icon={<LinkedinOutlined />}
-                                href="https://www.linkedin.com/in/guillaume-thomas-castelnau/">
-                                LinkedIn
-                            </Button>
-                            <Button
-                                icon={<GithubOutlined />}
-                                href="https://github.com/GuillaumeTC1">
-                                GitHub
-                            </Button>
-                        </Space>
-                    </Flex>
-                    <Flex
-                        vertical>
-                        <h3>Technical Lead</h3>
-                        <p>{props.description}</p>
-                        <Tabs items={items} />
+            <Flex vertical>
+                <Flex ref={infoRef}
+                    justify="space-between">
+                    <Avatar
+                        size={100}
+                        src="./profile_picture.jfif" />
+                    <Flex vertical
+                        gap="8px"
+                        align="flex-end">
+                        <h2 style={{ margin: 0 }}>{props.name}</h2>
+                        <h3 style={{ margin: 0 }}>Technical Lead</h3>
+                        <span>{props.email}</span>
                     </Flex>
                 </Flex>
-            </Flex>  
+                <p>{props.description}</p>
+                <Tabs items={items} />
+            </Flex>
             <Tour open={tourOpen} onClose={() => setTourOpen(false)} steps={steps} />
         </>
     );

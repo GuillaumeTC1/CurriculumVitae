@@ -1,7 +1,8 @@
 import { useAsync } from "@/hooks/useAsync";
-import { Flex, Spin } from "antd";
+import { Spin } from "antd";
 import axios from "axios";
 import { Experience, ExperienceProps } from "./Experience";
+import { CvTimeline } from "./CvTimeline";
 
 export const Experiences = () => {
 
@@ -16,12 +17,8 @@ export const Experiences = () => {
     }
 
     return (
-        <Flex vertical
-            gap="8px">
-            {experiences!.map(experience => (
-                <Experience key={crypto.randomUUID()}
-                    {...experience} />
-            ))}
-        </Flex>
+        <CvTimeline<ExperienceProps>
+            items={experiences!}
+            render={item => <Experience {...item} />} />
     );
 }

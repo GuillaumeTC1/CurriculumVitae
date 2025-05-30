@@ -1,5 +1,5 @@
 import { useAsync } from "@/hooks/useAsync";
-import { Flex, Spin } from "antd";
+import { Avatar, Flex, Spin } from "antd";
 import axios from "axios";
 import { Skill, SkillProps } from "./Skill";
 
@@ -28,10 +28,12 @@ export const Skills = () => {
 
     return (
         <Flex gap="8px">
-            {skills!.map(skill => (
-                <Skill key={crypto.randomUUID()}
-                    {...skill} />
-            ))}
+            <Avatar.Group shape="square">
+                {skills!.map(skill => (
+                    <Skill key={crypto.randomUUID()}
+                        {...skill} />
+                ))}
+            </Avatar.Group>
         </Flex>
     );
 }    

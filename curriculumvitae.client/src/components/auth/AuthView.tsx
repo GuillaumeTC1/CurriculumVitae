@@ -9,16 +9,7 @@ export const AuthView = (props: AuthViewProps) => {
 
     const authContext = useAuthContext();
 
-    if (authContext.isLogged) {
-
-        return (
-            <>
-                {props.children}
-            </>
-        );
-    }
-
-    return (
-        <></>
-    );
+    return authContext.isLogged
+        ? props.children
+        : <></>
 }

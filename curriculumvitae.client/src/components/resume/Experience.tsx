@@ -1,3 +1,4 @@
+import { Flex } from "antd";
 import { CvCard } from "./CvCard";
 
 export type ExperienceProps = {
@@ -10,18 +11,17 @@ export type ExperienceProps = {
 };
 
 export const Experience = (props: ExperienceProps) => {
+
     return (
         <CvCard title={
-            <>
+            <Flex vertical>
                 <span>{props.company}</span>
-                <>
+                <Flex justify="space-between">
                     <span className="job-title">{props.jobTitle}</span>
-                    <div className="exp-duration">
-                        <span>{new Date(props.startDate).toLocaleDateString()} - {props.endDate ? new Date(props.endDate).toLocaleDateString() : "Now"}</span>
-                        {/*<span>{`(${duration.years()}y ${duration.months()}m)`}</span>*/}
-                    </div>
-                </>
-            </>
-            } content={props.description} />
+                    <span>{new Date(props.startDate).toLocaleDateString()} - {props.endDate ? new Date(props.endDate).toLocaleDateString() : "Now"}</span>
+                </Flex>
+            </Flex>
+        }
+            content={props.description} />
     );
 }

@@ -1,7 +1,8 @@
 import { useAsync } from "@/hooks/useAsync";
-import { Flex, Spin } from "antd";
+import { Spin } from "antd";
 import axios from "axios";
 import { Formation, FormationProps } from "./Formation";
+import { CvTimeline } from "./CvTimeline";
 
 export type EducationProps = {};
 
@@ -18,12 +19,8 @@ export const Education = () => {
     }
 
     return (
-        <Flex vertical
-            gap="8px">
-            {education!.map(formation => (
-                <Formation key={crypto.randomUUID()}
-                    {...formation} />
-            ))}
-        </Flex>   
+        <CvTimeline<FormationProps>
+            items={education!}
+            render={item => <Formation {...item} />} />
     );
 }

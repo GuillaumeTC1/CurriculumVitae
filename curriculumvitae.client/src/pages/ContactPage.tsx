@@ -1,7 +1,7 @@
 import { hiringMessage } from "@/assets/hiringMessage";
+import { Page } from "@/components/page/Page";
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Page } from "@/components/page/Page";
 
 const ContactPage = () => {
 

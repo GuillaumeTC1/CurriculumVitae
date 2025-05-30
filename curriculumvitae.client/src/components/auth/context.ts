@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { IUser } from "./Auth.types";
+import { IUser } from "./auth.types";
 
 export interface IAuthContext {
     user?: IUser;

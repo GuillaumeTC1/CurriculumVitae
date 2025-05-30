@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { CvCard } from "./CvCard";
+import { Flex } from "antd";
 
 export type FormationProps = {
     school: string
@@ -18,14 +19,10 @@ export const Formation = (props: FormationProps) => {
     return (
         <CvCard
             title={
-                <>
-                    <span className="edu-school">{props.school}</span>
-                    <span className="edu-diploma">{props.diploma}</span>
-                    <div className="edu-duration">
-                        <span>{new Date(props.startDate).toLocaleDateString()} - {props.endDate ? new Date(props.endDate).toLocaleDateString() : "Now"}</span>
-                        {/*<span>{`(${duration.years()}y ${duration.months()}m)`}</span>*/}
-                    </div>
-                </>
+                <Flex justify="space-between">
+                    <span>{props.diploma} * {props.school}</span>
+                    <span>{new Date(props.startDate).toLocaleDateString()} - {props.endDate ? new Date(props.endDate).toLocaleDateString() : "Now"}</span>
+                </Flex>
             } content={props.description}
             image={logoUrl.toString()}
             dir="rtl"
