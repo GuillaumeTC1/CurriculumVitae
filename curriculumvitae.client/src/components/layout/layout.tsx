@@ -34,7 +34,11 @@ export const Layout = () => {
                             ghost
                             icon={<MenuOutlined />}
                             onClick={toggleMenuOpen} />
-                        <span>CurriculumVitae</span>
+                        <Button className="layout-button"
+                            type="link"
+                            href="/">
+                            CurriculumVitae
+                        </Button>
                     </Flex>
                     <Flex gap="8px"
                         style={{ padding: 0 }}>

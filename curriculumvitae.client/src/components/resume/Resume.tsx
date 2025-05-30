@@ -1,9 +1,9 @@
-import { useAuthContext } from "@/components/auth/context";
-import { Avatar, Flex, Tabs, TabsProps, Tour, TourProps } from "antd";
-import { useRef, useState } from "react";
+import { Avatar, Flex, Tabs, TabsProps } from "antd";
+import { useRef } from "react";
 import { Education } from "./Education";
 import { Experiences } from "./Experiences";
 import { Skills } from "./Skills";
+import { CvTour } from "./CvTour";
 
 export type ResumeProps = {
     jobTitle: string;
@@ -14,38 +14,11 @@ export type ResumeProps = {
 
 export const Resume = (props: ResumeProps) => {
 
-    var authContex = useAuthContext();
-
-    var [tourOpen, setTourOpen] = useState(true);
-
     var infoRef = useRef(null);
     var experiencesRef = useRef(null);
     var educationRef = useRef(null);
     var personalsRef = useRef(null);
     var awardsRef = useRef(null);
-
-    const steps: TourProps['steps'] = [
-        {
-            title: 'Welcome abroad!',
-            description: `Hey ${authContex.user?.given_name}, nice to see here.`
-        },
-        {
-            title: 'Check out my previous experiences...',
-            target: () => experiencesRef.current
-        },
-        {
-            title: '...and education...',
-            target: () => educationRef.current
-        },
-        {
-            title: '...and personnal projects there',
-            target: () => personalsRef.current
-        },
-        {
-            title: 'Reach out',
-            target: () => infoRef.current
-        }
-    ];
 
     const items: TabsProps['items'] = [
         {
@@ -89,7 +62,11 @@ export const Resume = (props: ResumeProps) => {
                 <p>{props.description}</p>
                 <Tabs items={items} />
             </Flex>
-            <Tour open={tourOpen} onClose={() => setTourOpen(false)} steps={steps} />
+            <CvTour
+                experiencesRef={experiencesRef}
+                educationRef={educationRef}
+                personalsRef={personalsRef}
+                awardsRef={awardsRef} />
         </>
     );
 }    
