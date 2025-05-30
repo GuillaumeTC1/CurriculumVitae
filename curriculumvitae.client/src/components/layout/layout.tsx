@@ -3,18 +3,7 @@ import { GithubOutlined, LinkedinOutlined, MenuOutlined } from "@ant-design/icon
 import { Layout as AntdLayout, Button, Drawer, Flex, FloatButton, Menu } from "antd";
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-
-const menuButtonStyle = {
-    height: "100%",
-    color: "white",
-    background: "transparent",
-    border: 0,
-    fontSize: "1.2rem"
-}
-
-const linkButtonStyle = {
-    color: "white"
-}
+import "./Layout.css"
 
 export const Layout = () => {
 
@@ -33,40 +22,39 @@ export const Layout = () => {
 
     return (
         <AntdLayout style={{ minHeight: "100vh" }}>
-            <AntdLayout.Header style={{ padding: "0 24px", position: "sticky", top: 0, zIndex: 1000 }}>
+            <AntdLayout.Header className="layout-header">
                 <Flex align="center"
                     justify="space-between"
                     style={{ height: "100%" }}>
                     <Flex gap="8px"
                         align="center"
-                        style={{ padding: 0, color: "white", fontSize: "1.2rem" }}>
+                        style={{ padding: 0, color: "white" }}>
                         <Button
-                            style={menuButtonStyle}
+                            className="menu-button layout-button"
+                            ghost
                             icon={<MenuOutlined />}
                             onClick={toggleMenuOpen} />
                         <span>CurriculumVitae</span>
                     </Flex>
                     <Flex gap="8px"
                         style={{ padding: 0 }}>
-                        <Button
+                        <Button className="layout-button"
                             type="link"
                             icon={<LinkedinOutlined />}
-                            href="https://www.linkedin.com/in/guillaume-thomas-castelnau/"
-                            style={linkButtonStyle}>
+                            href="https://www.linkedin.com/in/guillaume-thomas-castelnau/">
                             LinkedIn
                         </Button>
-                        <Button
+                        <Button className="layout-button"
                             type="link"
                             icon={<GithubOutlined />}
-                            href="https://github.com/GuillaumeTC1"
-                            style={linkButtonStyle}>
+                            href="https://github.com/GuillaumeTC1">
                             GitHub
                         </Button>
                         <Profile />
                     </Flex>
                 </Flex>
             </AntdLayout.Header>
-            <AntdLayout.Content style={{ position: "relative", height: "100%" }}>
+            <AntdLayout.Content className="layout-content">
                 <Drawer
                     placement="left"
                     open={menuOpen}

@@ -1,21 +1,16 @@
 import { Head } from "@/components/page/Head";
 import { ErrorPage } from "./ErrorPage";
+import "./Page.css"
 
 export type PageProps = {
     title?: string;
     children?: React.ReactNode
 }
 
-const pageStyle = {
-    height: "100%",
-    width: "100%",
-    padding: "24px 128px",
-}
-
 export const Page = (props: PageProps) => {
 
     return (
-        <div style={pageStyle}>
+        <div className="page">
             <Head title={props.title} />
             {props.children}
         </div>
