@@ -3,19 +3,18 @@ import { Spin } from "antd";
 import axios from "axios";
 import { Formation, FormationProps } from "./Formation";
 import { CvTimeline } from "./CvTimeline";
-
-export type EducationProps = {};
+import { FormationModel } from "./models/FormationModel";
 
 export const Education = () => {
 
     const {
         data: education,
         loading
-    } = useAsync(() => axios.get<FormationProps[]>("/info/education")
-        .then(response => response.data))
+    } = useAsync(() => axios.get<FormationModel[]>("/info/education")
+        .then(response => response.data));
 
     if (loading) {
-        return <Spin />
+        return <Spin />;
     }
 
     return (

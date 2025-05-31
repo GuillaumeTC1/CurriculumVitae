@@ -32,7 +32,7 @@ const PrivacyPage = () => {
             <p>Your information is <strong>not sold, shared, or disclosed</strong> to any third parties. Access to this data is restricted to the website owner and is only used for the purposes listed above.</p>
 
             <h2>4. Data Retention</h2>
-            <p>Authentication logs are kept for a limited period for security and troubleshooting. These logs are automatically deleted after <strong>[Insert retention period, e.g., 30 days]</strong>, unless required for legitimate security reasons.</p>
+            <p>Authentication logs are kept for a limited period for security and troubleshooting. These logs are automatically deleted after <strong>90 days</strong>, unless required for legitimate security reasons.</p>
 
             <h2>5. Security</h2>
             <p>The website uses appropriate technical measures to protect the security and confidentiality of your LinkedIn authentication data. All data is stored securely and is protected from unauthorized access.</p>

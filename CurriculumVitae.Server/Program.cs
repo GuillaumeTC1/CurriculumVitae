@@ -1,18 +1,16 @@
 using CurriculumVitae.Server.Identity;
-using Microsoft.AspNetCore.Authorization;
+using CurriculumVitae.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddHttpClient();
-
 builder.Services.AddLinkedInAuthentication();
-builder.Services.AddAuthorization(options =>
-{
-    options.FallbackPolicy = new AuthorizationPolicyBuilder()
-        .RequireAuthenticatedUser()
-        .Build();
-});
+builder.Services.AddCvAuthorization();
 
+//builder.Services.AddHttpClient();
+
+builder.Services.AddScoped<IInfoService, InfoService>();
+
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddControllers();
 
 var app = builder.Build();

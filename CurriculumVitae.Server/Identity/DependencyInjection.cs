@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CurriculumVitae.Server.Identity;
 
@@ -44,5 +45,13 @@ internal static class DependencyInjection
                    }
                };
            });
+    }
+
+    internal static AuthorizationBuilder AddCvAuthorization(this IServiceCollection services)
+    {
+        return services.AddAuthorizationBuilder()
+                .SetFallbackPolicy(new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build());
     }
 }

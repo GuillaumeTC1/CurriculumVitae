@@ -2,13 +2,14 @@ import { useAsync } from "@/hooks/useAsync";
 import { Avatar, Flex, Spin } from "antd";
 import axios from "axios";
 import { Skill, SkillProps } from "./Skill";
+import { SkillModel } from "./models/SkillModel";
 
 export const Skills = () => {
 
     const {
         data: skills,
         loading
-    } = useAsync(() => axios.get<SkillProps[]>("/info/skills")
+    } = useAsync(() => axios.get<SkillModel[]>("/info/skills")
         .then(response => response.data));
 
     //@ts-ignore

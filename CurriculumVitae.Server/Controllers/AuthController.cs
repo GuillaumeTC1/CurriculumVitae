@@ -14,9 +14,9 @@ public class AuthController(
 {
     [HttpGet("ping")]
     [ResponseCache(Duration = 60)]
-    public ActionResult<User> Ping()
+    public ActionResult<UserModel> Ping()
     {
-        var user = new User()
+        var user = new UserModel()
         {
             Name = User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Name)?.Value,
             GivenName = User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.GivenName)?.Value,

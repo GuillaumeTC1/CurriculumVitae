@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace CurriculumVitae.Server.Models;
 
-public class User
+public class UserModel
 {
     [JsonPropertyName("sub")]
     public string Sub { get; set; } = null!;

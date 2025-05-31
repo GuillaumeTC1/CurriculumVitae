@@ -1,18 +1,14 @@
-import { Avatar, Flex, Tabs, TabsProps } from "antd";
+import { Avatar, Flex, Spin, Tabs, TabsProps } from "antd";
 import { useRef } from "react";
 import { Education } from "./Education";
 import { Experiences } from "./Experiences";
 import { Skills } from "./Skills";
 import { CvTour } from "./CvTour";
+import { useAsync } from "@/hooks/useAsync";
+import axios from "axios";
+import { AboutModel } from "./models/AboutModel";
 
-export type ResumeProps = {
-    jobTitle: string;
-    description: string;
-    email: string;
-    name: string;
-}
-
-export const Resume = (props: ResumeProps) => {
+export const Resume = () => {
 
     var infoRef = useRef(null);
     var experiencesRef = useRef(null);
@@ -43,6 +39,16 @@ export const Resume = (props: ResumeProps) => {
         },
     ];
 
+    const {
+        data: about,
+        loading
+    } = useAsync(() => axios.get<AboutModel>("/info/about")
+        .then(response => response.data));
+
+    if (loading) {
+        return <Spin />;
+    }
+
     return (
         <>
             <Flex vertical>
@@ -54,12 +60,12 @@ export const Resume = (props: ResumeProps) => {
                     <Flex vertical
                         gap="8px"
                         align="flex-end">
-                        <h2 style={{ margin: 0 }}>{props.name}</h2>
-                        <h3 style={{ margin: 0 }}>Technical Lead</h3>
-                        <span>{props.email}</span>
+                        <h2 style={{ margin: 0 }}>{about!.name}</h2>
+                        <h3 style={{ margin: 0 }}>{about!.jobTitle}</h3>
+                        <span>{about!.email}</span>
                     </Flex>
                 </Flex>
-                <p>{props.description}</p>
+                <p>{about!.description}</p>
                 <Tabs items={items} />
             </Flex>
             <CvTour

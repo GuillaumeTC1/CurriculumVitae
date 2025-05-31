@@ -1,24 +1,20 @@
-import { Flex } from "antd";
+import { Flex, Typography } from "antd";
 import { CvCard } from "./CvCard";
+import { ExperienceModel } from "./models/ExperienceModel";
 
-export type ExperienceProps = {
-    company: string;
-    jobTitle: string;
-    description: string;
-    startDate: string;
-    endDate?: string;
-    logoUrl?: URL;
-};
+export type ExperienceProps = ExperienceModel & {}
 
 export const Experience = (props: ExperienceProps) => {
 
     return (
         <CvCard title={
             <Flex vertical>
-                <span>{props.company}</span>
+                <Typography.Text strong>{props.company}</Typography.Text>
                 <Flex justify="space-between">
-                    <span className="job-title">{props.jobTitle}</span>
-                    <span>{new Date(props.startDate).toLocaleDateString()} - {props.endDate ? new Date(props.endDate).toLocaleDateString() : "Now"}</span>
+                    <Typography.Text italic>{props.jobTitle}</Typography.Text>
+                    <Typography.Text italic>
+                        {new Date(props.startDate).toLocaleDateString()} - {props.endDate ? new Date(props.endDate).toLocaleDateString() : "Now"}
+                    </Typography.Text>
                 </Flex>
             </Flex>
         }

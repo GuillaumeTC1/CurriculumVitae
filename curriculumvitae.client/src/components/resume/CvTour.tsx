@@ -7,7 +7,7 @@ export type CvTourProps = {
     educationRef: RefObject<HTMLElement>;
     personalsRef: RefObject<HTMLElement>;
     awardsRef: RefObject<HTMLElement>;
-};
+}
 
 const cvTourStorageKey = "CvTourShow";
 

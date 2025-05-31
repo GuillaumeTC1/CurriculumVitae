@@ -1,12 +1,9 @@
 import { useMemo } from "react";
 import Avatar from "antd/es/avatar/Avatar";
 import { Tooltip } from "antd";
+import { SkillModel } from "./models/SkillModel";
 
-export type SkillProps = {
-    type: string;
-    detail: string;
-    logoUrl: string;
-}
+export type SkillProps = SkillModel & {}
 
 export const Skill = (props: SkillProps) => {
 
