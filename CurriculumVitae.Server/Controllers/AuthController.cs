@@ -14,9 +14,9 @@ public class AuthController(
 {
     [HttpGet("ping")]
     [ResponseCache(Duration = 60)]
-    public ActionResult<User> Ping()
+    public ActionResult<UserModel> Ping()
     {
-        var user = new User()
+        var user = new UserModel()
         {
             Name = User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Name)?.Value,
             GivenName = User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.GivenName)?.Value,
@@ -33,6 +33,11 @@ public class AuthController(
     [HttpPost("login")]
     public ActionResult Login()
     {
+        logger.LogInformation(
+            "{} has signed in with {}.",
+            User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Name)?.Value,
+            User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Email)?.Value);
+
         return SignIn(User);
     }
 
@@ -45,8 +50,7 @@ public class AuthController(
     [HttpGet("callback")]
     public ActionResult Callback([FromQuery] string code)
     {
-        SignIn(User);
-        logger.LogInformation("{} has signed in with {}.", User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Name)?.Value, User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Email)?.Value);
+        Login();
         return Redirect("/");
     }
 
@@ -54,7 +58,6 @@ public class AuthController(
     [AllowAnonymous]
     public ActionResult LinkedIn()
     {
-        return Redirect(
-            $"https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78x5jlbcl09xi1&redirect_uri=https://{HttpContext.Request.Host}/auth/callback&scope=openid%20profile");
+        return Redirect($"https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78x5jlbcl09xi1&redirect_uri=https://{HttpContext.Request.Host}/auth/callback&scope=openid%20profile");
     }
 }

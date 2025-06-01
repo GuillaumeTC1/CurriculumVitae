@@ -1,18 +1,42 @@
-import { hiringMessage } from "@/assets/hiring-message";
-import { useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useAuthContext } from "@/components/auth/context";
 import { Page } from "@/components/page/Page";
+import { Button, Form, Input, Space } from "antd";
 
 const ContactPage = () => {
 
-    const [searchParams] = useSearchParams()
+    const authContext = useAuthContext();
+    const [form] = Form.useForm();
 
-    const isHire = useMemo(() => searchParams.get("hire") === "true", [searchParams])
+    const handleAiFill = () => {
+        form.setFieldsValue({ content: "Hello Guillaume!\nThis message has been filled by AI." });
+    }
 
     return (
         <Page title="Contact">
-            <h1>Contact Page</h1>
-            <textarea defaultValue={isHire ? hiringMessage : ""} />
+            <Form form={form}
+                layout="horizontal"
+                style={{ maxWidth: 600 }}>
+                <Form.Item name="email">
+                    <Input
+                        placeholder="youremail@email.com"
+                        defaultValue={authContext.user?.email} />
+                </Form.Item>
+                <Form.Item name="content">
+                    <Input.TextArea
+                        placeholder="Type your message here..."
+                        style={{ height: 200 }} />
+                </Form.Item>
+                <Form.Item>
+                    <Space>
+                        <Button type="primary" htmlType="submit">
+                            Send
+                        </Button>
+                        <Button htmlType="button" onClick={handleAiFill}>
+                            AI Fill
+                        </Button>
+                    </Space>
+                </Form.Item>
+            </Form>
         </Page>
     );
 }

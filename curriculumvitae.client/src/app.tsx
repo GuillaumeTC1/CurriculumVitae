@@ -5,8 +5,8 @@ import ContactPage from '@/pages/ContactPage';
 import HomePage from '@/pages/HomePage';
 import LoginPage from '@/pages/LoginPage';
 import PrivacyPage from '@/pages/PrivacyPage';
-import '@/styles/app.css';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import './App.css';
 
 export const App = () => {
 

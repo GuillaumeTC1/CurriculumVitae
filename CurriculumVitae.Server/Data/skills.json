@@ -21,8 +21,8 @@
   },
   {
     "type": "tech",
-    "detail": "TypeScript",
-    "logoUrl": "./logos/skills/logo_javascript.png"
+    "detail": "React",
+    "logoUrl": "./logos/skills/logo_react.svg"
   },
   {
     "type": "tech",

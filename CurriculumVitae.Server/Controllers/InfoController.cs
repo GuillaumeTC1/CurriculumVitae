@@ -1,4 +1,5 @@
 ﻿using CurriculumVitae.Server.Models;
+using CurriculumVitae.Server.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,43 +9,39 @@ namespace CurriculumVitae.Server.Controllers;
 [Route("[controller]")]
 [Authorize]
 public class InfoController(
-    ILogger<InfoController> logger)
+    IInfoService infoService)
     : ControllerBase
 {
-    [HttpGet("profile")]
+    [HttpGet("about")]
     [ResponseCache(Duration = 3600)]
-    public async Task<ActionResult> GetProfileAsync()
+    public async Task<ActionResult<AboutModel>> GetAboutAsync()
     {
-        using StreamReader sr = new("./Data/experiences.json");
-        var content = sr.ReadToEndAsync();
-        return Ok(await content);
-    }
-
-    [HttpGet("experiences")]
-    [ResponseCache(Duration = 3600)]
-    public async Task<ActionResult> GetExperiencesAsync()
-    {
-        using StreamReader sr = new("./Data/experiences.json");
-        var content = sr.ReadToEndAsync();
-        return Ok(await content);
+        var result = await infoService.GetAboutAsync();
+        return Ok(result);
     }
 
     [HttpGet("education")]
     [ResponseCache(Duration = 3600)]
-    public async Task<ActionResult> GetEducationAsync()
+    public async Task<ActionResult<IEnumerable<FormationModel>>> GetEducationAsync()
     {
-        using StreamReader sr = new("./Data/education.json");
-        var content = sr.ReadToEndAsync();
-        return Ok(await content);
+        var result = await infoService.GetEducationAsync();
+        return Ok(result);
+    }
+
+    [HttpGet("experiences")]
+    [ResponseCache(Duration = 3600)]
+    public async Task<ActionResult<IEnumerable<ExperienceModel>>> GetExperiencesAsync()
+    {
+        var result = await infoService.GetExperiencesAsync();
+        return Ok(result);
     }
 
     [HttpGet("skills")]
     [ResponseCache(Duration = 3600)]
-    public async Task<ActionResult> GetSkillsAsync()
+    public async Task<ActionResult<IEnumerable<SkillModel>>> GetSkillsAsync()
     {
-        using StreamReader sr = new("./Data/skills.json");
-        var content = sr.ReadToEndAsync();
-        return Ok(await content);
+        var result = await infoService.GetSkillsAsync();
+        return Ok(result);
     }
 }
 

@@ -1,5 +1,6 @@
 import { Head } from "@/components/page/Head";
 import { ErrorPage } from "./ErrorPage";
+import "./Page.css"
 
 export type PageProps = {
     title?: string;
