@@ -1,9 +1,10 @@
-import { Profile } from "@/components/layout/Profile";
+import { Profile } from "./Profile";
 import { GithubOutlined, LinkedinOutlined, MenuOutlined } from "@ant-design/icons";
-import { Layout as AntdLayout, Button, Drawer, Flex, FloatButton, Menu } from "antd";
+import { Layout as AntdLayout, Button, Drawer, Flex, Menu } from "antd";
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import "./Layout.css"
+import { Chat } from "@/components/chat/Chat";
 
 export const Layout = () => {
 
@@ -72,7 +73,7 @@ export const Layout = () => {
                         <Menu.Item key="/privacy">Privacy</Menu.Item>
                     </Menu>
                 </Drawer>
-                <FloatButton onClick={() => console.log('onClick')} />
+                <Chat />
                 <Outlet />
             </AntdLayout.Content>
         </AntdLayout>
