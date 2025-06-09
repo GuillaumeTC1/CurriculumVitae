@@ -15,6 +15,61 @@
     "logoUrl": "./logos/skills/logo_azure.png"
   },
   {
+    "type": "software",
+    "detail": "Postman",
+    "logoUrl": "./logos/skills/logo_postman.png"
+  },
+  {
+    "type": "software",
+    "detail": "ArgoCD",
+    "logoUrl": "./logos/skills/logo_argocd.png"
+  },
+  {
+    "type": "software",
+    "detail": "Jenkins",
+    "logoUrl": "./logos/skills/logo_jenkins.png"
+  },
+  {
+    "type": "software",
+    "detail": "Blender",
+    "logoUrl": "./logos/skills/logo_blender.png"
+  },
+  {
+    "type": "software",
+    "detail": "Jira",
+    "logoUrl": "./logos/skills/logo_jira.png"
+  },
+  {
+    "type": "software",
+    "detail": "PowerBI",
+    "logoUrl": "./logos/skills/logo_powerbi.png"
+  },
+  {
+    "type": "software",
+    "detail": "SonarQube",
+    "logoUrl": "./logos/skills/logo_sonarqube.png"
+  },
+  {
+    "type": "software",
+    "detail": "Unreal",
+    "logoUrl": "./logos/skills/logo_unreal.svg"
+  },
+  {
+    "type": "software",
+    "detail": "Unity",
+    "logoUrl": "./logos/skills/logo_unity.png"
+  },
+  {
+    "type": "software",
+    "detail": "Git",
+    "logoUrl": "./logos/skills/logo_git.png"
+  },
+  {
+    "type": "software",
+    "detail": "GitHub",
+    "logoUrl": "./logos/skills/logo_github.png"
+  },
+  {
     "type": "tech",
     "detail": ".NET",
     "logoUrl": "./logos/skills/logo_dotnet.png"
@@ -27,31 +82,36 @@
   {
     "type": "tech",
     "detail": "Python",
-    "logoUrl": "./logos/skills/logo_visualstudio.png"
+    "logoUrl": "./logos/skills/logo_python.png"
   },
   {
-    "type": "management",
-    "detail": "Agile",
-    "logoUrl": "./logos/skills/logo_visualstudio.png"
+    "type": "tech",
+    "detail": "Kubernetes",
+    "logoUrl": "./logos/skills/logo_kubernetes.png"
+  },
+  {
+    "type": "tech",
+    "detail": "Docker",
+    "logoUrl": "./logos/skills/logo_docker.png"
   },
   {
     "type": "language",
     "detail": "French",
-    "logoUrl": "./logos/skills/logo_visualstudio.png"
+    "logoUrl": "./logos/skills/logo_french.png"
   },
   {
     "type": "language",
     "detail": "English",
-    "logoUrl": "./logos/skills/logo_visualstudio.png"
+    "logoUrl": "./logos/skills/logo_english.png"
   },
   {
     "type": "language",
     "detail": "Spanish",
-    "logoUrl": "./logos/skills/logo_visualstudio.png"
+    "logoUrl": "./logos/skills/logo_spanish.png"
   },
   {
     "type": "language",
     "detail": "Japanese",
-    "logoUrl": "./logos/skills/logo_visualstudio.png"
+    "logoUrl": "./logos/skills/logo_japanese.png"
   }
 ]

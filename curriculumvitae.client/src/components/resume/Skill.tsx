@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import Avatar from "antd/es/avatar/Avatar";
 import { Tooltip } from "antd";
 import { SkillModel } from "./models/SkillModel";
+import "./Skills.css"
 
 export type SkillProps = SkillModel & {}
 
@@ -28,9 +29,11 @@ export const Skill = (props: SkillProps) => {
     return (
         <Tooltip title={props.detail}>
             <Avatar
+                className="skill"
                 shape="square"
                 size="large"
-                src={logoUrl.toString()} />
+                src={logoUrl.toString()}
+                style={{ border: 0 }} />
         </Tooltip>
     );
 }    

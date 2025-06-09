@@ -5,8 +5,7 @@ import { RefObject, useState } from "react";
 export type CvTourProps = {
     experiencesRef: RefObject<HTMLElement>;
     educationRef: RefObject<HTMLElement>;
-    personalsRef: RefObject<HTMLElement>;
-    awardsRef: RefObject<HTMLElement>;
+    skillsRef: RefObject<HTMLElement>;
 }
 
 const cvTourStorageKey = "CvTourShow";
@@ -38,12 +37,8 @@ export const CvTour = (props: CvTourProps) => {
             target: () => props.educationRef.current!
         },
         {
-            title: '...and personnal projects there...',
-            target: () => props.personalsRef.current!
-        },
-        {
-            title: '...and awards here.',
-            target: () => props.awardsRef.current!
+            title: '...and skills there...',
+            target: () => props.skillsRef.current!
         }
     ];
 

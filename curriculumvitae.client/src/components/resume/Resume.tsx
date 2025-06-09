@@ -13,8 +13,7 @@ export const Resume = () => {
     var infoRef = useRef(null);
     var experiencesRef = useRef(null);
     var educationRef = useRef(null);
-    var personalsRef = useRef(null);
-    var awardsRef = useRef(null);
+    var skillsRef = useRef(null);
 
     const items: TabsProps['items'] = [
         {
@@ -29,14 +28,9 @@ export const Resume = () => {
         },
         {
             key: "3",
-            label: <div ref={personalsRef}>Personnal Projects</div>,
+            label: <div ref={skillsRef}>Skills</div>,
             children: <Skills />,
-        },
-        {
-            key: "4",
-            label: <div ref={awardsRef}>Awards</div>,
-            children: <Skills />,
-        },
+        }
     ];
 
     const {
@@ -62,7 +56,7 @@ export const Resume = () => {
                         align="flex-end">
                         <h2 style={{ margin: 0 }}>{about!.name}</h2>
                         <h3 style={{ margin: 0 }}>{about!.jobTitle}</h3>
-                        <span>{about!.email}</span>
+                        <a href={`mailto:${about!.email}`}>{about!.email}</a>
                     </Flex>
                 </Flex>
                 <p>{about!.description}</p>
@@ -71,8 +65,7 @@ export const Resume = () => {
             <CvTour
                 experiencesRef={experiencesRef}
                 educationRef={educationRef}
-                personalsRef={personalsRef}
-                awardsRef={awardsRef} />
+                skillsRef={skillsRef} />
         </>
     );
 }    
