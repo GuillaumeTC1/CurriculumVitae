@@ -1,5 +1,6 @@
 import { Page } from "@/components/page/Page";
 
+// TODO: Test page implementation using React-ThreeJS package
 const TestPage = () => {
 
     return (

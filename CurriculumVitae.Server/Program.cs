@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddLinkedInAuthentication();
 builder.Services.AddCvAuthorization();
 
-builder.Services.AddScoped<IInfoService, InfoService>();
+builder.Services.AddSingleton<IInfoService, InfoService>();
 
 builder.Services.AddSingleton(serviceProvider => Kernel.Builder.Build());
 builder.Services.Configure<OpenAiServiceOptions>(builder.Configuration.GetSection("OpenAI"))

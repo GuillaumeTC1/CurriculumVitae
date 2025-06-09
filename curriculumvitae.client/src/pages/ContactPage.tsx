@@ -15,7 +15,7 @@ const ContactPage = () => {
         <Page title="Contact">
             <Form form={form}
                 layout="horizontal"
-                style={{ maxWidth: 600 }}>
+                style={{ justifySelf: "center", width: "100%", maxWidth: 600 }}>
                 <Form.Item name="email">
                     <Input
                         placeholder="youremail@email.com"

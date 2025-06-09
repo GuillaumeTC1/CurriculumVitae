@@ -70,7 +70,7 @@ export const Chat = () => {
                     </Form>
                 </>
             }>
-            <FloatButton icon={<MessageOutlined />} />
+            <FloatButton icon={<MessageOutlined id="chat-icon" />} />
         </Popover>
     )
 }    

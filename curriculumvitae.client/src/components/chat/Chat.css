@@ -19,7 +19,7 @@
 .message-self {
     align-self: flex-end;
     color: white;
-    background-color: blueviolet;
+    background-color: #001529;
 }
 
 .message-other {

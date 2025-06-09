@@ -1,57 +1,164 @@
 [
   {
-    "type": "software",
-    "detail": "Visual Studio",
-    "logoUrl": "./logos/skills/logo_visualstudio.png"
+    "type": "softwares",
+    "name": "Visual Studio",
+    "logoUrl": "./logos/skills/logo_visualstudio.png",
+    "relevance": 1,
+    "level": "advanced"
   },
   {
-    "type": "software",
-    "detail": "VS Code",
-    "logoUrl": "./logos/skills/logo_vscode.png"
+    "type": "softwares",
+    "name": "VS Code",
+    "logoUrl": "./logos/skills/logo_vscode.png",
+    "relevance": 1,
+    "level": "advanced"
   },
   {
-    "type": "software",
-    "detail": "Azure",
-    "logoUrl": "./logos/skills/logo_azure.png"
+    "type": "softwares",
+    "name": "Azure",
+    "logoUrl": "./logos/skills/logo_azure.png",
+    "relevance": 4,
+    "level": "advanced"
   },
   {
-    "type": "tech",
-    "detail": ".NET",
-    "logoUrl": "./logos/skills/logo_dotnet.png"
+    "type": "softwares",
+    "name": "Postman",
+    "logoUrl": "./logos/skills/logo_postman.png",
+    "relevance": 2,
+    "level": "advanced"
   },
   {
-    "type": "tech",
-    "detail": "React",
-    "logoUrl": "./logos/skills/logo_react.svg"
+    "type": "softwares",
+    "name": "ArgoCD",
+    "logoUrl": "./logos/skills/logo_argocd.png",
+    "relevance": 3,
+    "level": "advanced"
   },
   {
-    "type": "tech",
-    "detail": "Python",
-    "logoUrl": "./logos/skills/logo_visualstudio.png"
+    "type": "softwares",
+    "name": "Jenkins",
+    "logoUrl": "./logos/skills/logo_jenkins.png",
+    "relevance": 2,
+    "level": "intermediate"
   },
   {
-    "type": "management",
-    "detail": "Agile",
-    "logoUrl": "./logos/skills/logo_visualstudio.png"
+    "type": "softwares",
+    "name": "Blender",
+    "logoUrl": "./logos/skills/logo_blender.png",
+    "relevance": 1,
+    "level": "advanced"
   },
   {
-    "type": "language",
-    "detail": "French",
-    "logoUrl": "./logos/skills/logo_visualstudio.png"
+    "type": "softwares",
+    "name": "Jira",
+    "logoUrl": "./logos/skills/logo_jira.png",
+    "relevance": 1,
+    "level": "intermediate"
   },
   {
-    "type": "language",
-    "detail": "English",
-    "logoUrl": "./logos/skills/logo_visualstudio.png"
+    "type": "softwares",
+    "name": "PowerBI",
+    "logoUrl": "./logos/skills/logo_powerbi.png",
+    "relevance": 3,
+    "level": "advanced"
   },
   {
-    "type": "language",
-    "detail": "Spanish",
-    "logoUrl": "./logos/skills/logo_visualstudio.png"
+    "type": "softwares",
+    "name": "SonarQube",
+    "logoUrl": "./logos/skills/logo_sonarqube.png",
+    "relevance": 2,
+    "level": "intermediate"
   },
   {
-    "type": "language",
-    "detail": "Japanese",
-    "logoUrl": "./logos/skills/logo_visualstudio.png"
+    "type": "softwares",
+    "name": "Unreal",
+    "logoUrl": "./logos/skills/logo_unreal.svg",
+    "relevance": 1,
+    "level": "intermediate"
+  },
+  {
+    "type": "softwares",
+    "name": "Unity",
+    "logoUrl": "./logos/skills/logo_unity.png",
+    "relevance": 1,
+    "level": "intermediate"
+  },
+  {
+    "type": "softwares",
+    "name": "Git",
+    "logoUrl": "./logos/skills/logo_git.png",
+    "relevance": 2,
+    "level": "advanced"
+  },
+  {
+    "type": "softwares",
+    "name": "GitHub",
+    "logoUrl": "./logos/skills/logo_github.png",
+    "relevance": 3,
+    "level": "advanced"
+  },
+  {
+    "type": "techs",
+    "name": ".NET",
+    "logoUrl": "./logos/skills/logo_dotnet.png",
+    "relevance": 4,
+    "level": "expert"
+  },
+  {
+    "type": "techs",
+    "name": "React",
+    "logoUrl": "./logos/skills/logo_react.svg",
+    "relevance": 4,
+    "level": "expert"
+  },
+  {
+    "type": "techs",
+    "name": "Python",
+    "logoUrl": "./logos/skills/logo_python.png",
+    "relevance": 4,
+    "level": "advanced"
+  },
+  {
+    "type": "techs",
+    "name": "Kubernetes",
+    "logoUrl": "./logos/skills/logo_kubernetes.png",
+    "relevance": 4,
+    "level": "expert"
+  },
+  {
+    "type": "techs",
+    "name": "Docker",
+    "logoUrl": "./logos/skills/logo_docker.png",
+    "relevance": 3,
+    "level": "advanced"
+  },
+  {
+    "type": "languages",
+    "name": "French",
+    "logoUrl": "./logos/skills/logo_french.png",
+    "relevance": 3,
+    "level": "expert",
+    "details": "Native speaker, fluent in both written and spoken French."
+  },
+  {
+    "type": "languages",
+    "name": "English",
+    "logoUrl": "./logos/skills/logo_english.png",
+    "relevance": 3,
+    "level": "advanced"
+  },
+  {
+    "type": "languages",
+    "name": "Spanish",
+    "logoUrl": "./logos/skills/logo_spanish.png",
+    "relevance": 1,
+    "level": "beginner"
+  },
+  {
+    "type": "languages",
+    "name": "Japanese",
+    "logoUrl": "./logos/skills/logo_japanese.png",
+    "relevance": 1,
+    "level": "beginner"
   }
 ]

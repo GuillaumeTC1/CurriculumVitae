@@ -1,0 +1,8 @@
+.skill {
+    transition: transform .2s;
+}
+
+.skill:hover {
+    z-index: 1000;
+    transform: scale(1.5);
+}
