@@ -4,6 +4,7 @@ using Microsoft.SemanticKernel.AI;
 using Microsoft.SemanticKernel.AI.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI.ChatCompletion;
 using Microsoft.SemanticKernel.SkillDefinition;
+using System.Text.Json;
 
 namespace CurriculumVitae.Server.Services;
 
@@ -21,9 +22,11 @@ internal class ChatService : IChatService
     private readonly IChatCompletion _chatCompletion;
     private readonly OpenAIChatHistory _chatHistory;
     private readonly ChatRequestSettings _chatRequestSettings;
-    
-    public ChatService(IKernel semanticKernel,
-                     IOptions<OpenAiServiceOptions> openAIOptions)
+
+    public ChatService(
+        IKernel semanticKernel,
+        IOptions<OpenAiServiceOptions> openAIOptions,
+        IInfoService infoService)
     {
         // Set up the chat request settings
         _chatRequestSettings = new ChatRequestSettings()
@@ -36,13 +39,28 @@ internal class ChatService : IChatService
         };
 
         // Configure the semantic kernel
-        semanticKernel.Config.AddOpenAIChatCompletionService("chat", openAIOptions.Value.ChatModel,
+        semanticKernel.Config.AddOpenAIChatCompletionService(
+            "chat", 
+            openAIOptions.Value.ChatModel,
             openAIOptions.Value.Key);
+
+        // Load every infos needed to answer questions
+        string availableData = JsonSerializer.Serialize(new
+        {
+            About = infoService.GetAboutAsync(),
+            Eduction = infoService.GetEducationAsync(),
+            Experiences = infoService.GetExperiencesAsync(),
+            Skills = infoService.GetSkillsAsync()
+        });
+
+        // Create instructions for the chat, including the available data
+        string chatInstructions = openAIOptions.Value.SystemPrompt
+            .Replace("{availableData}", availableData);
 
         // Set up the chat completion and history - the history is used to keep track of the conversation
         // and is part of the prompt sent to ChatGPT to allow a continuous conversation
         _chatCompletion = semanticKernel.GetService<IChatCompletion>();
-        _chatHistory = (OpenAIChatHistory)_chatCompletion.CreateNewChat(openAIOptions.Value.SystemPrompt);
+        _chatHistory = (OpenAIChatHistory)_chatCompletion.CreateNewChat(chatInstructions);
     }
 
     /// <summary>

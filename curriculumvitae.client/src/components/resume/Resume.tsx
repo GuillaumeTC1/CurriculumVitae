@@ -1,35 +1,29 @@
 import { Avatar, Flex, Spin, Tabs, TabsProps } from "antd";
-import { useRef } from "react";
 import { Education } from "./Education";
 import { Experiences } from "./Experiences";
-import { Skills } from "./Skills";
 import { CvTour } from "./CvTour";
 import { useAsync } from "@/hooks/useAsync";
 import axios from "axios";
 import { AboutModel } from "./models/AboutModel";
+import { SkillsDashbord } from "@/components/skills/SkillsDashboard";
 
 export const Resume = () => {
-
-    var infoRef = useRef(null);
-    var experiencesRef = useRef(null);
-    var educationRef = useRef(null);
-    var skillsRef = useRef(null);
 
     const items: TabsProps['items'] = [
         {
             key: "1",
-            label: <div ref={experiencesRef}>Experiences</div>,
+            label: <div id="experiences">Experiences</div>,
             children: <Experiences />,
         },
         {
             key: "2",
-            label: <div ref={educationRef}>Education</div>,
+            label: <div id="education">Education</div>,
             children: <Education />,
         },
         {
             key: "3",
-            label: <div ref={skillsRef}>Skills</div>,
-            children: <Skills />,
+            label: <div id="skills">Skills</div>,
+            children: <SkillsDashbord />,
         }
     ];
 
@@ -46,7 +40,7 @@ export const Resume = () => {
     return (
         <>
             <Flex vertical>
-                <Flex ref={infoRef}
+                <Flex id="info"
                     justify="space-between">
                     <Avatar
                         size={100}
@@ -62,10 +56,7 @@ export const Resume = () => {
                 <p>{about!.description}</p>
                 <Tabs items={items} />
             </Flex>
-            <CvTour
-                experiencesRef={experiencesRef}
-                educationRef={educationRef}
-                skillsRef={skillsRef} />
+            <CvTour />
         </>
     );
 }    

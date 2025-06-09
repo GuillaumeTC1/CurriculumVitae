@@ -1,16 +1,13 @@
 import { useAuthContext } from "@/components/auth/context";
+import { useRefById } from "@/hooks/useRefById";
 import { Tour, TourProps } from "antd";
-import { RefObject, useState } from "react";
+import { useState } from "react";
 
-export type CvTourProps = {
-    experiencesRef: RefObject<HTMLElement>;
-    educationRef: RefObject<HTMLElement>;
-    skillsRef: RefObject<HTMLElement>;
-}
+export type CvTourProps = {}
 
 const cvTourStorageKey = "CvTourShow";
 
-export const CvTour = (props: CvTourProps) => {
+export const CvTour = (_: CvTourProps) => {
 
     const showTour: boolean = JSON.parse(localStorage.getItem(cvTourStorageKey) ?? "true");
 
@@ -23,6 +20,12 @@ export const CvTour = (props: CvTourProps) => {
         localStorage.setItem(cvTourStorageKey, "false");
     }
 
+    // var infoRef = useRefById("info");
+    var experiencesRef = useRefById("experiences");
+    var educationRef = useRefById("education");
+    var skillsRef = useRefById("skills");
+    var chatRef = useRefById("chat-icon");
+
     const steps: TourProps['steps'] = [
         {
             title: 'Welcome abroad!',
@@ -30,15 +33,19 @@ export const CvTour = (props: CvTourProps) => {
         },
         {
             title: 'Check out my previous experiences...',
-            target: () => props.experiencesRef.current!
+            target: () => experiencesRef.current!
         },
         {
             title: '...and education...',
-            target: () => props.educationRef.current!
+            target: () => educationRef.current!
         },
         {
             title: '...and skills there...',
-            target: () => props.skillsRef.current!
+            target: () => skillsRef.current!
+        },
+        {
+            title: '...and finally an AI chat here where you can ask anything about Guillaume!',
+            target: () => chatRef.current!
         }
     ];
 
