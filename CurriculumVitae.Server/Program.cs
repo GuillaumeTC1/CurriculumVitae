@@ -9,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddLinkedInAuthentication();
 builder.Services.AddCvAuthorization();
 
+builder.Services.AddSingleton<IInfoService, InfoService>();
+builder.Services.AddSingleton<IMailingService, MailingService>();
 builder.Services.AddDatabase(builder.Configuration);
 
 builder.Services.AddResumeServices();
