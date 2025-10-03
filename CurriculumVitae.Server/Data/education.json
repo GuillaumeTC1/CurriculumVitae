@@ -5,7 +5,7 @@
     "startDate": "09/01/2019",
     "endDate": "09/30/2022",
     "diploma": "Master of Engineering",
-    "description": "Generalist degree (Computer Science Major) providing a solid scientific knowledge as wellas project management skills. Admission by competitive examination after two years ofpreparatory class. President of the Ski Association (2020) Tutor for Phocean Exchanges"
+    "description": "Advanced coursework in algorithms, optimization, statistics, and applied mathematics."
   },
   {
     "school": "Université Aix-Marseille",
@@ -13,7 +13,7 @@
     "startDate": "09/01/2021",
     "endDate": "09/30/2022",
     "diploma": "Master of Science",
-    "description": "Methods for automatic generation of 3D objects, geometry processing algorithms forcomputer-aided design, rendering, animation, virtual and augmented reality, and thevideo game industry."
+    "description": "Master of Geometry and Computational Graphics (GIG) in parallel of my engineering studies. Theoric content about 3D meshes and render (topology, procedural, remeshing, smoothing & more)."
   },
   {
     "school": "Lycée Jean Dautet",
@@ -21,6 +21,6 @@
     "startDate": "09/01/2017",
     "endDate": "09/02/2019",
     "diploma": "Maths Sup/Maths Spé",
-    "description": "Very intensive 2 years program to prepare competitive examination of engineeringschools in France."
+    "description": "Intensive preparation in mathematics, physics, and computer science (competitive entrance exams)."
   }
 ]

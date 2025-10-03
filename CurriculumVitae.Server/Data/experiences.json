@@ -4,7 +4,7 @@
     "logoUrl": "./logos/loral_logo.jfif",
     "startDate": "11/14/2022",
     "jobTitle": "IT R&I - Technical Lead",
-    "description": "I am the Tech Lead for cloud development in the raw materials sector, working alongside a team of 50 developers.\r\nThis position is highly versatile, allowing me to acquire new skills daily in areas such as networking, cloud infrastructure, DevOps, architecture, and development.\r\nAt the core of my role is the understanding of business requirements and delivering customer-focused solutions. I also facilitate code reviews, share knowledge, and promote best practices among development teams, maintaining a mindset of continuous improvement regarding stability, resilience, and performance.\r\nI have a strong belief in the importance of conventions, and my aim is to establish standards that reduce risks and friction points between services. To this end, I have successfully published packages (NuGet, NPM & Helm), including a design system in React, cross-cutting NuGets to encapsulate essential features (tested and versioned) like application RBAC, and K8s Helm charts. Additionally, I have created templates to implement these essential features and demonstrate usage and best practices."
+    "description": "Key contributor to the team building the Formulation Center platform, an AI-powered cloud-native software used daily by 8,000+ researchers worldwide.\nLed design & delivery of raw materials domain APIs and web apps.\nArchitected platform engineering stack (microservices & front-end templates, React design system, .NET libraries, Helm) -> powering 100+ apps.\nKubernetes & Azure administrator — designed CI/CD workflows, maintained operators, led infra upgrades.\nCreated PowerBI dashboards &rarr; enabled ExCom to make data-driven strategic decisions\nRecruited & mentored developers, led code reviews & workshops."
   },
   {
     "company": "L'Oréal",
@@ -12,6 +12,6 @@
     "startDate": "04/19/2022",
     "endDate": "09/30/2022",
     "jobTitle": "IT O+O - Project Manager",
-    "description": ""
+    "description": "Contributed to the operation of 400+ localized websites across all brands with 99.99% SLA.\nBuilt a mass-import tool (.NET) -> reduced KPI dashboard refresh time from 12h to 30min.\nPrototyped Virtual Reality experiences to enhance consumer interaction.\nDesigned monitoring dashboards for Ops team, reducing incident resolution time."
   }
 ]
