@@ -40,7 +40,7 @@ internal class ChatService : IChatService
 
         // Configure the semantic kernel
         semanticKernel.Config.AddOpenAIChatCompletionService(
-            "chat", 
+            "chat",
             openAIOptions.Value.ChatModel,
             openAIOptions.Value.Key);
 

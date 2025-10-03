@@ -12,7 +12,7 @@ public class SkillModel
 
     [JsonPropertyName("logoUrl")]
     public string LogoUrl { get; set; } = null!;
-    
+
     [JsonPropertyName("relevance")]
     public int Relevance { get; set; }
 

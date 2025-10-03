@@ -9,7 +9,7 @@ namespace CurriculumVitae.Server.Controllers;
 [Route("[controller]")]
 [Authorize]
 public class AuthController(
-    ILogger<AuthController> logger) 
+    ILogger<AuthController> logger)
     : ControllerBase
 {
     [HttpGet("ping")]

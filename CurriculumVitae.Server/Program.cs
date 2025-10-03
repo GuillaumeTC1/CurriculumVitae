@@ -1,6 +1,6 @@
 using CurriculumVitae.Server;
-using CurriculumVitae.Server.Identity;
 using CurriculumVitae.Server.Services;
+using CurriculumVitae.Server.Services.Identity;
 using Microsoft.SemanticKernel;
 using Scalar.AspNetCore;
 

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 
-namespace CurriculumVitae.Server.Identity;
+namespace CurriculumVitae.Server.Services.Identity;
 
 internal static class DependencyInjection
 {
