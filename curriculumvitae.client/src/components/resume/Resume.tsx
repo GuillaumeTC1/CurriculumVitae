@@ -1,4 +1,4 @@
-import { Avatar, Flex, Spin, Tabs, TabsProps } from "antd";
+import { Avatar, Flex, Spin, Tabs, TabsProps, Typography } from "antd";
 import { Education } from "./Education";
 import { Experiences } from "./Experiences";
 import { CvTour } from "./CvTour";
@@ -53,7 +53,10 @@ export const Resume = () => {
                         <a href={`mailto:${about!.email}`}>{about!.email}</a>
                     </Flex>
                 </Flex>
-                <p>{about!.description}</p>
+                <Typography.Text
+                    style={{ whiteSpace: "pre-wrap" }}>
+                    {about!.description}
+                </Typography.Text>
                 <Tabs items={items} />
             </Flex>
             <CvTour />

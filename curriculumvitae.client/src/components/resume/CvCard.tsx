@@ -26,7 +26,8 @@ export const CvCard = (props: CvCardProps) => {
                             expandable: 'collapsible',
                             expanded,
                             onExpand: (_, info) => setExpanded(info.expanded),
-                        }}>
+                        }}
+                        style={{ whiteSpace: "pre-wrap" }}>
                         {props.content}
                     </Typography.Paragraph>
                 </Flex>

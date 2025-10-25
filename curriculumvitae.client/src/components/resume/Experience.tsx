@@ -17,7 +17,6 @@ export const Experience = (props: ExperienceProps) => {
                     </Typography.Text>
                 </Flex>
             </Flex>
-        }
-            content={props.description} />
+        } content={props.description} />
     );
 }
