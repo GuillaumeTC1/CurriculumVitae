@@ -6,9 +6,10 @@ internal static class DependencyInjection
 {
     internal static IServiceCollection AddChatServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped(serviceProvider => Kernel.Builder.Build());
+        //services.AddTransient(sp => new Kernel(sp));
+
         services.Configure<OpenAiServiceOptions>(configuration.GetSection("OpenAI"))
-            .AddScoped<IChatService, ChatService>();
+            .AddSingleton<IChatService, ChatService>();
 
         return services;
     }
