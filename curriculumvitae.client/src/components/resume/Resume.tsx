@@ -30,7 +30,7 @@ export const Resume = () => {
     const {
         data: about,
         loading
-    } = useAsync(() => axios.get<AboutModel>("/info/about")
+    } = useAsync(() => axios.get<AboutModel>("/resume/about")
         .then(response => response.data));
 
     if (loading) {

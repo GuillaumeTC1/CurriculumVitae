@@ -1,5 +1,5 @@
 export type ExperienceModel = {
-    company: string;
+    companyName: string;
     jobTitle: string;
     description: string;
     startDate: string;

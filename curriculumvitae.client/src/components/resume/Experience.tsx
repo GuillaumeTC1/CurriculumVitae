@@ -9,7 +9,7 @@ export const Experience = (props: ExperienceProps) => {
     return (
         <CvCard title={
             <Flex vertical>
-                <Typography.Text strong>{props.company}</Typography.Text>
+                <Typography.Text strong>{props.companyName}</Typography.Text>
                 <Flex justify="space-between">
                     <Typography.Text italic>{props.jobTitle}</Typography.Text>
                     <Typography.Text italic>

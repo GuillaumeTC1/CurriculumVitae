@@ -1,14 +1,14 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace CurriculumVitae.Server.Models;
+namespace CurriculumVitae.Server.Services.Resume.Education;
 
-public class FormationModel
+public class EducationModel
 {
-    [JsonPropertyName("school")]
-    public string School { get; set; } = null!;
+    [JsonPropertyName("institutionName")]
+    public string InstitutionName { get; set; } = null!;
 
-    [JsonPropertyName("diploma")]
-    public string Diploma { get; set; } = null!;
+    [JsonPropertyName("degree")]
+    public string Degree { get; set; } = null!;
 
     [JsonPropertyName("description")]
     public string Description { get; set; } = null!;

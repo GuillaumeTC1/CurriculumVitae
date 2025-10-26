@@ -1,5 +1,4 @@
-﻿using CurriculumVitae.Server.Models;
-using CurriculumVitae.Server.Services;
+﻿using CurriculumVitae.Server.Services.Chat;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

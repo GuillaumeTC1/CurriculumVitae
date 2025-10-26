@@ -1,3 +1,7 @@
+using CurriculumVitae.Server.Services.Resume.About;
+using CurriculumVitae.Server.Services.Resume.Education;
+using CurriculumVitae.Server.Services.Resume.Experiences;
+using CurriculumVitae.Server.Services.Resume.Skills;
 using Microsoft.Extensions.Options;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.AI;
@@ -6,7 +10,7 @@ using Microsoft.SemanticKernel.Connectors.OpenAI.ChatCompletion;
 using Microsoft.SemanticKernel.SkillDefinition;
 using System.Text.Json;
 
-namespace CurriculumVitae.Server.Services;
+namespace CurriculumVitae.Server.Services.Chat;
 
 public interface IChatService
 {
@@ -26,7 +30,10 @@ internal class ChatService : IChatService
     public ChatService(
         IKernel semanticKernel,
         IOptions<OpenAiServiceOptions> openAIOptions,
-        IInfoService infoService)
+        IAboutService aboutService,
+        IEducationService educationService,
+        IExperiencesService experiencesService,
+        ISkillsService skillsService)
     {
         // Set up the chat request settings
         _chatRequestSettings = new ChatRequestSettings()
@@ -47,10 +54,10 @@ internal class ChatService : IChatService
         // Load every infos needed to answer questions
         string availableData = JsonSerializer.Serialize(new
         {
-            About = infoService.GetAboutAsync(),
-            Eduction = infoService.GetEducationAsync(),
-            Experiences = infoService.GetExperiencesAsync(),
-            Skills = infoService.GetSkillsAsync()
+            About = aboutService.GetAboutAsync(),
+            Eduction = educationService.GetEducationAsync(),
+            Experiences = experiencesService.GetExperiencesAsync(),
+            Skills = skillsService.GetSkillsAsync()
         });
 
         // Create instructions for the chat, including the available data
