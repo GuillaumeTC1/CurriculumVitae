@@ -20,7 +20,7 @@ public class ExperiencesEntity
     [Column("start_date")]
     public DateTime StartDate { get; set; }
 
-    [Column ("end_date")]
+    [Column("end_date")]
     public DateTime? EndDate { get; set; }
 
     [Column("logo_url")]

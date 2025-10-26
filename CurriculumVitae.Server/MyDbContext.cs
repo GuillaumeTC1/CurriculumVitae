@@ -22,7 +22,7 @@ public static class DependencyInjection
 }
 
 public class MyDbContext(
-    DbContextOptions<MyDbContext> options) 
+    DbContextOptions<MyDbContext> options)
     : DbContext(options)
 {
     public DbSet<EducationEntity> Education { get; set; }
