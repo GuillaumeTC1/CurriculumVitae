@@ -15,13 +15,11 @@ public interface IChatService
     Task<IEnumerable<ChatMessageModel>> GetHistory(string userId);
 }
 
-/// <summary>
-/// A Sematic Kernel skill that interacts with ChatGPT
-/// </summary>
 internal class ChatService : IChatService
 {
     private readonly IKernelBuilder _builder;
     private readonly Kernel _kernel;
+    private readonly OpenAiServiceOptions _openAIOptions;
     private readonly IChatCompletionService _chatCompletionService;
 
     private readonly string _chatInstructions;
@@ -31,6 +29,8 @@ internal class ChatService : IChatService
         IServiceProvider serviceProvider,
         IOptions<OpenAiServiceOptions> openAIOptions)
     {
+        _openAIOptions = openAIOptions.Value;
+
         // Set up the chat request settings
         //_chatRequestSettings = new ChatRequestSettings()
         //{
@@ -40,7 +40,7 @@ internal class ChatService : IChatService
         //    PresencePenalty = openAIOptions.Value.PresencePenalty,
         //    TopP = openAIOptions.Value.TopP
         //};
-        
+
         _builder = Kernel.CreateBuilder();
         _builder.AddOpenAIChatCompletion(
             modelId: openAIOptions.Value.ChatModel,
@@ -49,22 +49,12 @@ internal class ChatService : IChatService
 
         // Load every infos needed to answer questions
         using var scope = serviceProvider.CreateScope();
-        string availableData = JsonSerializer.Serialize(new
-        {
-            About = scope.ServiceProvider.GetRequiredService<IAboutService>().GetAboutAsync().GetAwaiter().GetResult(),
-            Eduction = scope.ServiceProvider.GetRequiredService<IEducationService>().GetEducationAsync().GetAwaiter().GetResult(),
-            Experiences = scope.ServiceProvider.GetRequiredService<IExperiencesService>().GetExperiencesAsync().GetAwaiter().GetResult(),
-            Skills = scope.ServiceProvider.GetRequiredService<ISkillsService>().GetSkillsAsync().GetAwaiter().GetResult()
-        });
-
-        // Create instructions for the chat, including the available data
-        _chatInstructions = openAIOptions.Value.SystemPrompt
-            .Replace("{availableData}", availableData);
+        _chatInstructions = BuildSystemPromptAsync(scope).GetAwaiter().GetResult();
 
         _kernel = _builder.Build();
         _chatCompletionService = _kernel.GetRequiredService<IChatCompletionService>();
     }
-    
+
     public async Task<string> Chat(string userId, string userMessage)
     {
         var history = GetOrCreateChatHistory(userId);
@@ -82,9 +72,10 @@ internal class ChatService : IChatService
 
         return history
             .Where(message => message.Role == AuthorRole.User || message.Role == AuthorRole.Assistant)
-            .Select(message => new ChatMessageModel() { 
-                IsUser = message.Role == AuthorRole.User, 
-                Content = message.Content 
+            .Select(message => new ChatMessageModel()
+            {
+                IsUser = message.Role == AuthorRole.User,
+                Content = message.Content
             });
     }
 
@@ -97,5 +88,20 @@ internal class ChatService : IChatService
         }
 
         return history;
+    }
+
+    private async Task<string> BuildSystemPromptAsync(IServiceScope scope)
+    {
+        string availableData = JsonSerializer.Serialize(new
+        {
+            About = await scope.ServiceProvider.GetRequiredService<IAboutService>().GetAboutAsync(),
+            Eduction = await scope.ServiceProvider.GetRequiredService<IEducationService>().GetEducationAsync(),
+            Experiences = await scope.ServiceProvider.GetRequiredService<IExperiencesService>().GetExperiencesAsync(),
+            Skills = await scope.ServiceProvider.GetRequiredService<ISkillsService>().GetSkillsAsync()
+        });
+
+        // Create instructions for the chat, including the available data
+        return _openAIOptions.SystemPrompt
+            .Replace("{availableData}", availableData);
     }
 }
