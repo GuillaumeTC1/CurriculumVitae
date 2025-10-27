@@ -10,7 +10,7 @@ export const Experiences = () => {
     const {
         data: experiences,
         loading
-    } = useAsync(() => axios.get<ExperienceModel[]>("/info/experiences")
+    } = useAsync(() => axios.get<ExperienceModel[]>("/resume/experiences")
         .then(response => response.data));
 
     if (loading) {

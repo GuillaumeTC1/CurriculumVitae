@@ -1,11 +1,11 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace CurriculumVitae.Server.Models;
+namespace CurriculumVitae.Server.Services.Resume.Experiences;
 
-public class ExperienceModel
+public class ExperiencesModel
 {
-    [JsonPropertyName("company")]
-    public string Company { get; set; } = null!;
+    [JsonPropertyName("companyName")]
+    public string CompanyName { get; set; } = null!;
 
     [JsonPropertyName("jobTitle")]
     public string JobTitle { get; set; } = null!;

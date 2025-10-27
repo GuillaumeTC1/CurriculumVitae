@@ -1,7 +1,7 @@
-﻿using CurriculumVitae.Server.Models;
-using CurriculumVitae.Server.Services;
+﻿using CurriculumVitae.Server.Services.Chat;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace CurriculumVitae.Server.Controllers;
 
@@ -12,9 +12,19 @@ public class ChatController(
     IChatService chatService)
     : ControllerBase
 {
+    private string UserId => User.Claims.First(claim => claim.Type == ClaimTypes.Email).Value;
+
     [HttpPost]
-    public async Task<ActionResult> SendAsync([FromBody] ChatModel model)
+    public async Task<ActionResult> ChatAsync([FromBody] ChatModel model)
     {
-        return Ok(await chatService.Prompt(model.Prompt));
+        var response = await chatService.Chat(UserId, model.Prompt);
+        return Ok(response);
+    }
+
+    [HttpGet("history")]
+    public async Task<ActionResult> GetHistory()
+    {
+        var response = await chatService.GetHistory(UserId);
+        return Ok(response);
     }
 }

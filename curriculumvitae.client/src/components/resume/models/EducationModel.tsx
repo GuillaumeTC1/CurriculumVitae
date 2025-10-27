@@ -1,6 +1,6 @@
-export type FormationModel = {
-    school: string;
-    diploma: string;
+export type EducationModel = {
+    institutionName: string;
+    degree: string;
     description: string;
     startDate: string;
     endDate?: string;

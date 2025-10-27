@@ -1,7 +1,7 @@
 import "./Chat.css"
 
 export interface IMessage {
-    self: boolean,
+    isUser: boolean,
     content: string
 }
 
@@ -11,7 +11,7 @@ export const Message = (props: MessageProps) => {
 
     const messageContent = <p className="message-content">{props.content}</p>
 
-    if (props.self) {
+    if (props.isUser) {
         return <div className="message message-self">{messageContent}</div>;
     }
 

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { MessageOutlined, SendOutlined } from "@ant-design/icons";
 import { IMessage, Message } from "./Message";
+import { useAsync } from "@/hooks/useAsync";
 import "./Chat.css"
 
 export const Chat = () => {
@@ -17,13 +18,19 @@ export const Chat = () => {
         setMessages([...messages, message]);
     }
 
+    const {
+        data: experiences,
+        loading: historyLoading
+    } = useAsync(() => axios.get<IMessage[]>("/chat/history")
+        .then(response => response.data));
+
     const handleSubmit = () => {
         // Get form prompt and clear input 
         const prompt = form.getFieldValue("prompt");
         form.resetFields();
 
         // Push user input to message feed
-        pushMessage({ self: true, content: prompt });
+        pushMessage({ isUser: true, content: prompt });
 
         setLoading(true); // Set loading to display loading animation while API is responding
 
@@ -34,8 +41,12 @@ export const Chat = () => {
     }
 
     useEffect(() => {
+        setMessages(experiences || []);
+    }, [experiences]);
+
+    useEffect(() => {
         if (response) {
-            pushMessage({ self: false, content: response })
+            pushMessage({ isUser: false, content: response })
         }
     }, [response]);
 
@@ -53,7 +64,7 @@ export const Chat = () => {
                         vertical
                         style={{ display: "flex" /* force to display container even when empty */ }}>
                         {messages.map(message => <Message {...message} />)}
-                        {loading && <Spin />}
+                        {(loading || historyLoading) && <Spin />}
                     </Flex>
                     <Form form={form}
                         layout="horizontal"

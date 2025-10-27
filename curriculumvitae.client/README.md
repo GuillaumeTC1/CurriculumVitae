@@ -1,43 +1,57 @@
-# React + TypeScript + Vite
+# curriculumvitae.client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for the CurriculumVitae project, built with React, TypeScript, Vite, and Ant Design. It provides a modern, responsive UI to showcase a professional CV and interact with the backend API.
 
-Currently, two official plugins are available:
+## Features
+- View education, experience, and skills
+- AI-powered chat about the profile
+- LinkedIn authentication
+- Responsive design (Ant Design)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Getting Started
+### Install dependencies
+```sh
+npm install
+```
+### Run the development server
+```sh
+npm run dev
+```
+### Build for production
+```sh
+npm run build
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Project Structure
+- `src/` - Main source code
+  - `components/` - UI components (auth, chat, layout, etc.)
+  - `pages/` - Page components (Home, Contact, Privacy, Login)
+  - `hooks/` - Custom React hooks
+  - `utils/` - Utility functions
+- `public/` - Static assets (images, logos)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Main Dependencies
+- React 18
+- TypeScript
+- Vite
+- Ant Design
+- Axios
+- React Router DOM
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
+## Environment Variables
+Configure API endpoints and authentication in `.env` if needed.
+
+## Scripts
+- `npm run dev` - Start dev server
+- `npm run build` - Build for production
+- `npm run lint` - Lint code
+- `npm run preview` - Preview production build
+
+## Screenshots
+<!-- Add screenshots of the UI here -->
+
+## License
+See root LICENSE file.
     react,
   },
   rules: {

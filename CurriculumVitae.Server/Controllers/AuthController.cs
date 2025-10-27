@@ -1,4 +1,4 @@
-using CurriculumVitae.Server.Models;
+using CurriculumVitae.Server.Services.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -9,7 +9,7 @@ namespace CurriculumVitae.Server.Controllers;
 [Route("[controller]")]
 [Authorize]
 public class AuthController(
-    ILogger<AuthController> logger) 
+    ILogger<AuthController> logger)
     : ControllerBase
 {
     [HttpGet("ping")]
