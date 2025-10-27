@@ -1,10 +1,10 @@
-export type Level = "expert" | "advanced" | "intermediate" | "beginner"
+export type Proficiency = "expert" | "advanced" | "intermediate" | "beginner"
 
 export type SkillModel = {
-    type: string;
+    category: string;
     name: string;
     logoUrl: string;
     relevance: number;
-    level: Level;
+    proficiency: Proficiency;
     details?: string;
 };

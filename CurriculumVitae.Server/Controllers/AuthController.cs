@@ -1,4 +1,4 @@
-using CurriculumVitae.Server.Models;
+using CurriculumVitae.Server.Services.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;

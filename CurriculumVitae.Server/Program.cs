@@ -1,7 +1,7 @@
 using CurriculumVitae.Server;
-using CurriculumVitae.Server.Services;
+using CurriculumVitae.Server.Services.Chat;
 using CurriculumVitae.Server.Services.Identity;
-using Microsoft.SemanticKernel;
+using CurriculumVitae.Server.Services.Resume;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,11 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddLinkedInAuthentication();
 builder.Services.AddCvAuthorization();
 
-builder.Services.AddSingleton<IInfoService, InfoService>();
+builder.Services.AddDatabase(builder.Configuration);
 
-builder.Services.AddSingleton(serviceProvider => Kernel.Builder.Build());
-builder.Services.Configure<OpenAiServiceOptions>(builder.Configuration.GetSection("OpenAI"))
-    .AddSingleton<IChatService, ChatService>();
+builder.Services.AddResumeServices();
+builder.Services.AddChatServices(builder.Configuration);
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddControllers();
@@ -32,10 +31,15 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseSwagger();
+
+#region Map Endpoints
+
 app.MapScalarApiReference(options => options.OpenApiRoutePattern = "swagger/v1/swagger.json");
 
 app.MapControllers();
 
 app.MapFallbackToFile("/index.html");
+
+#endregion
 
 app.Run();

@@ -11,7 +11,7 @@ export const Skills = (props: SkillsProps) => {
         <Avatar.Group shape="square">
             {props.skills!.sort((x, y) => x.name.localeCompare(y.name))
                 .map(skill => (
-                    <Skill key={`${skill.type}-${skill.name}`}
+                    <Skill key={`${skill.category}-${skill.name}`}
                         {...skill} />
                 ))}
         </Avatar.Group>

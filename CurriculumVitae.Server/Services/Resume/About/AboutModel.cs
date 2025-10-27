@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace CurriculumVitae.Server.Models;
+namespace CurriculumVitae.Server.Services.Resume.About;
 
 public class AboutModel
 {

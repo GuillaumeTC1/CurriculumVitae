@@ -4,11 +4,11 @@ import axios from "axios";
 import { SkillModel } from "./models/SkillModel";
 import { useEffect, useMemo, useState } from "react";
 import { SkillsByRelevance } from "./SkillsByRelevance";
-import { SkillsByLevel } from "./SkillsByLevel";
-import { SkillsByType } from "./SkillsByType";
+import { SkillsByProficiency } from "./SkillsByProficiency";
+import { SkillsByCategory } from "./SkillsByCategory";
 import { SkillsByName } from "./SkillsByName";
 
-type skillsTransform = "byRelevance" | "byLevel" | "byName" | "byType";
+type skillsTransform = "byRelevance" | "byProficiency" | "byName" | "byCategory";
 
 export const SkillsDashbord = () => {
 
@@ -18,23 +18,23 @@ export const SkillsDashbord = () => {
     const {
         data: skills,
         loading
-    } = useAsync(() => axios.get<SkillModel[]>("/info/skills")
+    } = useAsync(() => axios.get<SkillModel[]>("/resume/skills")
         .then(response => response.data));
 
     useEffect(() => {
         if (skills) setFilterSkills(skills);
     }, [skills, setFilterSkills]);
 
-    const skillsTypes = useMemo(() => [...new Set(skills?.map(skill => skill.type))], [skills]);
+    const skillsTypes = useMemo(() => [...new Set(skills?.map(skill => skill.category))], [skills]);
 
     const SelectedTransform = useMemo(() => {
         switch (transform) {
             case "byRelevance":
                 return SkillsByRelevance;
-            case "byLevel":
-                return SkillsByLevel;
-            case "byType":
-                return SkillsByType;
+            case "byProficiency":
+                return SkillsByProficiency;
+            case "byCategory":
+                return SkillsByCategory;
             case "byName":
             default:
                 return SkillsByName;
@@ -45,7 +45,7 @@ export const SkillsDashbord = () => {
         if (!types || types.length === 0) {
             setFilterSkills(skills ?? []);
         }
-        else setFilterSkills(skills?.filter(x => types.includes(x.type)) ?? []);
+        else setFilterSkills(skills?.filter(x => types.includes(x.category)) ?? []);
     }
 
     if (loading) {
@@ -58,8 +58,8 @@ export const SkillsDashbord = () => {
                 <Segmented<skillsTransform>
                     options={[
                         { label: "Relevance", value: "byRelevance" },
-                        { label: "Expertise", value: "byLevel" },
-                        { label: "Type", value: "byType" },
+                        { label: "Proficiency", value: "byProficiency" },
+                        { label: "Category", value: "byCategory" },
                         { label: "Name", value: "byName" }
                     ]}
                     onChange={(value) => setTransform(value)}
