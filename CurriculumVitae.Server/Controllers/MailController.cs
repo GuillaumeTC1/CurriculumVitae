@@ -17,7 +17,7 @@ public class MailController(
         var fromMail = User.Claims.First(claim => claim.Type == System.Security.Claims.ClaimTypes.Email).Value;
         var success = await mailService.SendMailAsync(fromMail, model.Content, cancellationToken);
 
-        return success ? 
+        return success ?
             Created() : Problem("Failed to send mail");
     }
 }
