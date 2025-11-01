@@ -1,6 +1,7 @@
 using CurriculumVitae.Server;
 using CurriculumVitae.Server.Services.Chat;
 using CurriculumVitae.Server.Services.Identity;
+using CurriculumVitae.Server.Services.Mail;
 using CurriculumVitae.Server.Services.Resume;
 using Scalar.AspNetCore;
 
@@ -13,6 +14,7 @@ builder.Services.AddDatabase(builder.Configuration);
 
 builder.Services.AddResumeServices();
 builder.Services.AddChatServices(builder.Configuration);
+builder.Services.AddMailServices(builder.Configuration);
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddControllers();

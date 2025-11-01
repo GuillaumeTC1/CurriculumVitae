@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="AI.Dev.OpenAI.GPT" Version="1.0.2" />
+    <PackageReference Include="AntiXSS" Version="4.3.0" />
     <PackageReference Include="Mapster.EFCore" Version="5.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.16" />
     <PackageReference Include="Microsoft.SemanticKernel" Version="1.66.0" />
