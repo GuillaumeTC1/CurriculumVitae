@@ -1,7 +1,6 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS base
-USER app
-WORKDIR /app
 EXPOSE 8081
+ENV HTTPS_PORTS=8081
 
 FROM node:20 AS client-build
 WORKDIR /src
@@ -22,4 +21,7 @@ FROM base AS final
 WORKDIR /app
 COPY --from=server-build /app/publish .
 COPY --from=client-build /src/CurriculumVitae.Server/wwwroot /wwwroot
+RUN addgroup -g 111 ssl-cert
+RUN addgroup app ssl-cert
+USER app
 ENTRYPOINT ["dotnet", "CurriculumVitae.Server.dll"]
