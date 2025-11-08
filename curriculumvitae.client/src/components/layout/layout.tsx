@@ -1,28 +1,37 @@
 import { Profile } from "./Profile";
-import { GithubOutlined, LinkedinOutlined, MenuOutlined } from "@ant-design/icons";
-import { Layout as AntdLayout, Button, Drawer, Flex, Menu } from "antd";
+import { CloseOutlined, GithubOutlined, HomeOutlined, LinkedinOutlined, MailOutlined, MenuOutlined, SafetyOutlined } from "@ant-design/icons";
+import { Layout as AntdLayout, Breadcrumb, Button, Flex, Menu, theme, Typography } from "antd";
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import "./Layout.css"
 import { Chat } from "@/components/chat/Chat";
+import { ChatButton } from "../chat/ChatButton";
 
 export const Layout = () => {
 
     const navigate = useNavigate();
 
     const [menuOpen, setMenuOpen] = useState(false);
+    const [chatOpen, setChatOpen] = useState(false);
 
     const toggleMenuOpen = () => {
         setMenuOpen(!menuOpen)
     }
 
-    const handleMenuItemClick = ({ key }: { key: string }) => {
-        navigate(key);
-        toggleMenuOpen();
+    const toggleChatOpen = () => {
+        setChatOpen(!chatOpen);
     }
 
+    const handleMenuItemClick = ({ key }: { key: string }) => {
+        navigate(key);
+    }
+
+    const {
+        token: { colorBgContainer, borderRadiusLG },
+    } = theme.useToken();
+
     return (
-        <AntdLayout style={{ minHeight: "100vh" }}>
+        <AntdLayout style={{ height: "100vh" }}>
             <AntdLayout.Header className="layout-header">
                 <Flex align="center"
                     justify="space-between"
@@ -58,24 +67,56 @@ export const Layout = () => {
                     </Flex>
                 </Flex>
             </AntdLayout.Header>
-            <AntdLayout.Content className="layout-content">
-                <Drawer
-                    placement="left"
-                    open={menuOpen}
-                    closable={false}
-                    onClose={toggleMenuOpen}
-                    getContainer={false}>
+            <AntdLayout>
+                <AntdLayout.Sider
+                    collapsed={!menuOpen}
+                    style={{ background: colorBgContainer }}>
                     <Menu
                         mode="inline"
                         onClick={handleMenuItemClick}>
-                        <Menu.Item key="/">Home</Menu.Item>
-                        <Menu.Item key="/contact">Contact</Menu.Item>
-                        <Menu.Item key="/privacy">Privacy</Menu.Item>
+                        <Menu.Item key="/" icon={<HomeOutlined />}>Home</Menu.Item>
+                        <Menu.Item key="/contact" icon={<MailOutlined />}>Contact</Menu.Item>
+                        <Menu.Item key="/privacy" icon={<SafetyOutlined />}>Privacy</Menu.Item>
                     </Menu>
-                </Drawer>
-                <Chat />
-                <Outlet />
-            </AntdLayout.Content>
+                </AntdLayout.Sider>
+                <AntdLayout style={{ padding: '0 24px 24px' }}>
+                    <Breadcrumb
+                        items={[{ title: 'Home' }, { title: 'List' }, { title: 'App' }]}
+                        style={{ margin: '16px 0' }} />
+                    <AntdLayout.Content
+                        style={{
+                            padding: 24,
+                            margin: 0,
+                            minHeight: 280,
+                            background: colorBgContainer,
+                            borderRadius: borderRadiusLG,
+                        }}>
+                        <Outlet />
+                        {!chatOpen && <ChatButton onClick={toggleChatOpen} />}
+                    </AntdLayout.Content>
+                </AntdLayout>
+                <AntdLayout.Sider
+                    collapsed={!chatOpen}
+                    collapsedWidth={0}
+                    width="30%"
+                    style={{ background: colorBgContainer }}>
+                    <Flex vertical style={{ height: "100%" }}>
+                        <Flex align="center" style={{ padding: 8 }}>
+                            <Typography.Title level={4}
+                                style={{ display: "inline-block", margin: "16px" }}>
+                                AI Chat
+                            </Typography.Title>
+                            <Button
+                                style={{ marginLeft: "auto", marginRight: 8 }}
+                                icon={<CloseOutlined />}
+                                onClick={toggleChatOpen} />
+                        </Flex>
+                        <div style={{ flexGrow: 1 }}>
+                            <Chat />
+                        </div>
+                    </Flex>
+                </AntdLayout.Sider>
+            </AntdLayout>
         </AntdLayout>
     );
 }

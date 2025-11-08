@@ -1,7 +1,6 @@
 .feed {
     display: flex;
     height: 300px;
-    width: 250px;
     overflow-y: scroll;
     scrollbar-width: none;
 }
