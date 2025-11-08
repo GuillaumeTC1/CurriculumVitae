@@ -69,17 +69,20 @@ export const Chat = () => {
                 <div ref={messagesEndRef} />
             </Flex>
             <Form form={form}
-                layout="horizontal"
-                style={{ maxWidth: 600 }}>
-                <Form.Item name="prompt">
+                layout="inline"
+                style={{ marginTop: 8 }}>
+                <Form.Item name="prompt" style={{ flexGrow: 1 }}>
                     <Space.Compact style={{ width: "100%" }}>
                         <Input
                             allowClear
                             placeholder="Aa"
+                            style={{ flexGrow: 1 }}
                             onPressEnter={handleSubmit} />
                         <Button icon={<SendOutlined />} onClick={handleSubmit} />
                     </Space.Compact>
-                    <Select>
+                </Form.Item>
+                <Form.Item name="model" initialValue="mistral">
+                    <Select defaultValue="mistral">
                         <Select.Option value="mistral">Mistral Small</Select.Option>
                         <Select.Option value="openai">GPT 3.5</Select.Option>
                     </Select>
