@@ -1,3 +1,5 @@
+using CurriculumVitae.Server.Services.Chat.Mistral;
+using CurriculumVitae.Server.Services.Chat.OpenAi;
 using CurriculumVitae.Server.Services.Resume.About;
 using CurriculumVitae.Server.Services.Resume.Education;
 using CurriculumVitae.Server.Services.Resume.Experiences;
@@ -19,7 +21,8 @@ internal class ChatService : IChatService
 {
     private readonly IKernelBuilder _builder;
     private readonly Kernel _kernel;
-    private readonly OpenAiServiceOptions _openAIOptions;
+    private readonly OpenAiOptions _openAiOptions;
+    private readonly MistralOptions _mistralOptions;
     private readonly IChatCompletionService _chatCompletionService;
 
     private readonly string _chatInstructions;
@@ -27,9 +30,11 @@ internal class ChatService : IChatService
 
     public ChatService(
         IServiceProvider serviceProvider,
-        IOptions<OpenAiServiceOptions> openAIOptions)
+        IOptions<OpenAiOptions> openAiOptions,
+        IOptions<MistralOptions> mistralOptions)
     {
-        _openAIOptions = openAIOptions.Value;
+        _openAiOptions = openAiOptions.Value;
+        _mistralOptions = mistralOptions.Value;
 
         // Set up the chat request settings
         //_chatRequestSettings = new ChatRequestSettings()
@@ -42,10 +47,10 @@ internal class ChatService : IChatService
         //};
 
         _builder = Kernel.CreateBuilder();
-        _builder.AddOpenAIChatCompletion(
-            modelId: openAIOptions.Value.ChatModel,
-            apiKey: openAIOptions.Value.Key
-        );
+
+        _builder
+            //.AddOpenAIChatCompletion(_openAiOptions.ChatModel, _openAiOptions.Key)
+            .AddMistralChatCompletion(_mistralOptions.Model, _mistralOptions.Key);
 
         // Load every infos needed to answer questions
         using var scope = serviceProvider.CreateScope();
@@ -101,7 +106,7 @@ internal class ChatService : IChatService
         });
 
         // Create instructions for the chat, including the available data
-        return _openAIOptions.SystemPrompt
+        return _openAiOptions.SystemPrompt
             .Replace("{availableData}", availableData);
     }
 }
