@@ -5,12 +5,12 @@
 body {
     margin: unset;
     overflow: hidden;
-    min-width: 550px;
+    min-width: 414px;
 }
 
 @media only screen and (max-width: 768px) {
 
-    .body {
-        font-size: .8rem;
-    }
+    /* body * {
+        font-size: .8rem !important;
+    } */
 }

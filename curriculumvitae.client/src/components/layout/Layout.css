@@ -7,16 +7,35 @@
 }
 
 .layout-content {
-    position: relative;
-    height: 100%;
+    padding: 24px;
+    margin: 0;
+}
+
+.main-content {
+    padding: 0 24px;
 }
 
 .layout-button {
     color: white;
+    border: 0;
 }
 
 .menu-button {
     height: 100%;
-    border: 0;
     font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .main-content {
+        padding: 0 8px;
+    }
+
+    .layout-content {
+        padding: 8px;
+    }
+
+    .layout-button {
+        font-size: 1.2rem;
+    }
 }

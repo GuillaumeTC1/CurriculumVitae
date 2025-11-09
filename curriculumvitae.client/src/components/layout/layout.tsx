@@ -30,11 +30,20 @@ export const Layout = () => {
         }
     }
 
+    const handleMenuItemClick = () => {
+        if (isSmallScreen) {
+            setMenuOpen(false);
+        }
+    }
+
     return (
         <AntdLayout style={{ height: "100vh" }}>
-            <LayoutHeader onMenuButtonClick={toggleMenuOpen} />
+            <LayoutHeader
+                onMenuButtonClick={toggleMenuOpen} />
             <AntdLayout>
-                <MenuSider open={menuOpen && !isSmallScreen} />
+                <MenuSider
+                    open={menuOpen}
+                    onMenuItemClick={handleMenuItemClick} />
                 <MainContent />
                 <ChatSider
                     open={chatOpen && !isSmallScreen}

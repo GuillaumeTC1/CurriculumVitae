@@ -10,8 +10,8 @@ import ChatPage from "./pages/ChatPage";
 import './App.css';
 
 export const App = () => {
-
     return (
+
         <AuthProvider>
             <Router>
                 <Routes>
