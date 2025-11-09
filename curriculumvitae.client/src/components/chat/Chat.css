@@ -1,5 +1,5 @@
 .chat-container {
-    height: 100%;
+    flex-grow: 1;
     padding: 12px 8px;
 }
 
@@ -9,6 +9,7 @@
 
 .feed {
     display: flex;
+    height: 1px;
     flex-grow: 1;
     overflow-y: scroll;
     scrollbar-width: none;

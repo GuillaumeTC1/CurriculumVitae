@@ -5,9 +5,15 @@ import { MenuSider } from "./MenuSider";
 import { ChatSider } from "./ChatSider";
 import { LayoutHeader } from "./LayoutHeader";
 import { MainContent } from "./MainContent";
+import { useMediaQuery } from "react-responsive";
+import { useNavigate } from "react-router-dom";
 import "./Layout.css";
 
 export const Layout = () => {
+
+    const navigate = useNavigate();
+
+    const isSmallScreen = useMediaQuery({ maxWidth: 768 });
 
     const [menuOpen, setMenuOpen] = useState(false);
     const [chatOpen, setChatOpen] = useState(false);
@@ -17,17 +23,21 @@ export const Layout = () => {
     }
 
     const toggleChatOpen = () => {
-        setChatOpen(!chatOpen);
+        if (isSmallScreen && !chatOpen) {
+            navigate("/chat");
+        } else {
+            setChatOpen(!chatOpen);
+        }
     }
 
     return (
         <AntdLayout style={{ height: "100vh" }}>
             <LayoutHeader onMenuButtonClick={toggleMenuOpen} />
             <AntdLayout>
-                <MenuSider open={menuOpen} />
+                <MenuSider open={menuOpen && !isSmallScreen} />
                 <MainContent />
                 <ChatSider
-                    open={chatOpen}
+                    open={chatOpen && !isSmallScreen}
                     onCloseButtonClick={toggleChatOpen} />
                 {!chatOpen && <ChatButton onClick={toggleChatOpen} />}
             </AntdLayout>

@@ -20,6 +20,7 @@ export const MenuSider = (props: MenuSiderProps) => {
     return (
         <Layout.Sider
             collapsed={!props.open}
+            collapsedWidth={60}
             style={{ background: colorBgContainer }}>
             <Menu
                 mode="inline"
