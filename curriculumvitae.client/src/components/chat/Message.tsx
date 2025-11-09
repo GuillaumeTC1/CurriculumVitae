@@ -1,3 +1,4 @@
+import { Typography } from "antd"
 import "./Chat.css"
 
 export interface IMessage {
@@ -7,13 +8,42 @@ export interface IMessage {
 
 export type MessageProps = IMessage & {}
 
+const MessageContent = (props: MessageProps) => {
+    return (
+        <Typography.Text
+            style={{ whiteSpace: "pre-wrap", color: "inherit" }}>
+            {props.content}
+        </Typography.Text>
+    );
+}
+
+const MessageLoading = () => {
+    return (
+        <div className="message message-other">
+            <div className="message-loading">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    );
+}
+
 export const Message = (props: MessageProps) => {
 
-    const messageContent = <p className="message-content">{props.content}</p>
-
     if (props.isUser) {
-        return <div className="message message-self">{messageContent}</div>;
+        return (
+            <div className="message message-self">
+                <MessageContent {...props} />
+            </div>
+        );
     }
 
-    return <div className="message message-other">{messageContent}</div>;
-}    
+    return (
+        <div className="message message-other">
+            <MessageContent {...props} />
+        </div>
+    );
+}
+
+Message.Loading = MessageLoading;

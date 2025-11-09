@@ -1,4 +1,4 @@
-import { Button, Flex, Form, Input, Select, Space, Spin } from "antd";
+import { Button, Flex, Form, Input, Select, Space } from "antd";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { SendOutlined } from "@ant-design/icons";
@@ -65,7 +65,7 @@ export const Chat = () => {
                 style={{ flexGrow: 1 }}
                 ref={messagesEndRef}>
                 {messages.map(message => <Message {...message} />)}
-                {(loading || historyLoading) && <Spin />}
+                {(loading || historyLoading) && <Message.Loading />}
                 <div ref={messagesEndRef} />
             </Flex>
             <Form form={form}
