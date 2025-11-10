@@ -1,9 +1,9 @@
-namespace CurriculumVitae.Server.Services.Chat;
+namespace CurriculumVitae.Server.Services.Chat.OpenAi;
 
 /// <summary>
 /// Configuration options for interacting with OpenAI.
 /// </summary>
-public class OpenAiServiceOptions
+public class OpenAiOptions
 {
     /// <summary>
     /// API Key.

@@ -54,7 +54,9 @@ export const SkillsDashbord = () => {
 
     return (
         <Flex vertical gap="24px">
-            <Flex justify="space-between">
+            <Flex wrap
+                gap="small"
+                justify="space-between">
                 <Segmented<skillsTransform>
                     options={[
                         { label: "Relevance", value: "byRelevance" },
@@ -67,7 +69,7 @@ export const SkillsDashbord = () => {
                 <Select
                     mode="multiple"
                     placeholder="Filter skills..."
-                    style={{ minWidth: 200 }}
+                    style={{ minWidth: 100, maxWidth: 200, flexGrow: 1 }}
                     options={skillsTypes.map(type => ({ label: type, value: type }))}
                     onChange={(values) => handleFiltering(values)} />
             </Flex>

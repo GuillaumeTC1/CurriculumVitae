@@ -1,5 +1,4 @@
-import { Card, Flex, Typography } from "antd";
-import { useState } from "react";
+import { Collapse, Flex, Typography } from "antd";
 
 export type CvCardProps = {
     title: React.ReactNode;
@@ -10,28 +9,26 @@ export type CvCardProps = {
 
 export const CvCard = (props: CvCardProps) => {
 
-    const [expanded, setExpanded] = useState(false);
-
     return (
-        <Card styles={{ body: { padding: 0 } }}>
-            <Flex dir={props.dir}>
-                <img src={props.image} />
-                <Flex vertical
-                    dir="ltr"
-                    style={{ flexGrow: 1, padding: 24 }}>
-                    <div>{props.title}</div>
-                    <Typography.Paragraph
-                        ellipsis={{
-                            rows: 2,
-                            expandable: 'collapsible',
-                            expanded,
-                            onExpand: (_, info) => setExpanded(info.expanded),
-                        }}
-                        style={{ whiteSpace: "pre-wrap" }}>
-                        {props.content}
-                    </Typography.Paragraph>
-                </Flex>
-            </Flex>
-        </Card>
+        <Collapse defaultActiveKey={["1"]}>
+            <Collapse.Panel key="1"
+                style={{ alignItems: "center" }}
+                header={
+                    <Flex dir={props.dir}
+                        style={{ alignItems: "center" }}>
+
+                        <Flex className="cv-card-title"
+                            vertical
+                            dir="ltr">
+                            {props.title}
+                        </Flex>
+                    </Flex>
+                }>
+                <Typography.Paragraph
+                    style={{ whiteSpace: "pre-wrap" }}>
+                    {props.content}
+                </Typography.Paragraph>
+            </Collapse.Panel>
+        </Collapse>
     );
 }

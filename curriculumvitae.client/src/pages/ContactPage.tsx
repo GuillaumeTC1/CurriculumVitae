@@ -44,7 +44,7 @@ const ContactPage = () => {
             {notificationHolder}
             <Form form={form}
                 layout="horizontal"
-                style={{ justifySelf: "center", width: "100%", maxWidth: 600 }}>
+                style={{ justifySelf: "center", width: "100%", maxWidth: 1200 }}>
                 <Form.Item name="email">
                     <Input
                         disabled

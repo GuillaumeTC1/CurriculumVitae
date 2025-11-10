@@ -14,6 +14,8 @@ internal class ExperiencesService(
     public async Task<IEnumerable<ExperiencesModel>> GetExperiencesAsync()
     {
         return await dbContext.Experiences
+            .OrderByDescending(x => x.EndDate)
+            .ThenByDescending(x => x.StartDate)
             .ProjectToType<ExperiencesModel>()
             .ToListAsync();
     }
