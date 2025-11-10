@@ -15,12 +15,12 @@ export const Profile = () => {
     if (!authContext.isLogged) {
         return (
             <Popover
-            placement="bottomRight"
-            content={
-                <Flex vertical>
-                    <Button href="/login">Login</Button>
-                </Flex>
-            }>
+                placement="bottomRight"
+                content={
+                    <Flex vertical>
+                        <Button href="/login">Login</Button>
+                    </Flex>
+                }>
                 <Avatar />
             </Popover>
         );
