@@ -3,5 +3,15 @@
 }
 
 body {
-    margin: unset;
+    height: 100dvh;
+    width: 100vw;
+    min-width: 414px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#root {
+    height: 100%;
+    width: 100%;
 }

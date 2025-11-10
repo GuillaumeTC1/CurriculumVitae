@@ -14,6 +14,8 @@ internal class EducationService(
     public async Task<IEnumerable<EducationModel>> GetEducationAsync()
     {
         return await dbContext.Education
+            .OrderByDescending(x => x.EndDate)
+            .ThenBy(x => x.StartDate)
             .ProjectToType<EducationModel>()
             .ToListAsync();
     }
