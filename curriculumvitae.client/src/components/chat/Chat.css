@@ -36,8 +36,14 @@
     background-color: #f5f5f5;
 }
 
-.message-input {
+/* .message-input {
     width: 100%;
+    align-items: flex-end;
+} */
+
+.message-input textarea {
+    resize: none;
+    scrollbar-width: none;
 }
 
 .message-loading {

@@ -3,6 +3,11 @@
     width: 100%;
     max-width: 1200px;
     margin: auto;
+    overflow-x: hidden;
     overflow-y: scroll;
-    scrollbar-width: none;
+    scrollbar-width: none !important;
+}
+
+.page::-webkit-scrollbar {
+    display: none !important;
 }

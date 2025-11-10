@@ -37,7 +37,7 @@ export const Layout = () => {
     }
 
     return (
-        <AntdLayout style={{ height: "100vh" }}>
+        <AntdLayout style={{ height: "100%" }}>
             <LayoutHeader
                 onMenuButtonClick={toggleMenuOpen} />
             <AntdLayout>
@@ -47,7 +47,7 @@ export const Layout = () => {
                 <MainContent />
                 <ChatSider
                     open={chatOpen && !isSmallScreen}
-                    onCloseButtonClick={toggleChatOpen} />
+                    onBackButtonClick={toggleChatOpen} />
                 {!chatOpen && <ChatButton onClick={toggleChatOpen} />}
             </AntdLayout>
         </AntdLayout>

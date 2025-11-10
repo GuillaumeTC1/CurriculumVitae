@@ -1,15 +1,15 @@
 import axios from "axios";
-import { Button, Flex, Form, Input, Select, Space } from "antd";
+import { Button, Flex, Form, Input, Select } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { SendOutlined } from "@ant-design/icons";
 import { IMessage, Message } from "./Message";
 import { useMessageHistory } from "./useMessageHistory";
 import { useScrollToEnd } from "./useScrollToEnd";
 import { ChatHeader } from "./ChatHeader";
-import "./Chat.css"
+import "./Chat.css";
 
 export type ChatProps = {
-    onCloseButtonClick?: () => void;
+    onBackButtonClick?: () => void;
 }
 
 export const Chat = (props: ChatProps) => {
@@ -37,6 +37,11 @@ export const Chat = (props: ChatProps) => {
         const userMessage = form.getFieldValue("userMessage");
         form.resetFields();
 
+        // Ignore empty messages
+        if (!userMessage || userMessage.trim() === "") {
+            return;
+        }
+
         // Push user input to message feed
         pushMessage({ isUser: true, content: userMessage });
         setLoading(true);
@@ -45,6 +50,13 @@ export const Chat = (props: ChatProps) => {
         axios.post<string>("/chat", { model, userMessage })
             .then(response => setResponse(response.data))
             .finally(() => setLoading(false));
+    }
+
+    const handleEnterPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.shiftKey) {
+            e.preventDefault();
+            handleSubmit();
+        }
     }
 
     useEffect(() => {
@@ -57,8 +69,7 @@ export const Chat = (props: ChatProps) => {
         <Flex vertical style={{ height: "100%" }}>
             <ChatHeader
                 backButton
-                closeButton
-                onCloseButtonClick={props.onCloseButtonClick} />
+                onBackButtonClick={props.onBackButtonClick} />
             <Flex className="chat-container"
                 vertical>
                 <Flex className="feed"
@@ -70,16 +81,16 @@ export const Chat = (props: ChatProps) => {
                 </Flex>
                 <Form form={form}
                     layout="inline"
-                    style={{ marginTop: 8 }}>
+                    autoFocus={false}
+                    style={{ marginTop: 8, alignItems: "flex-end" }}>
                     <Form.Item name="userMessage" style={{ flexGrow: 1 }}>
-                        <Space.Compact className="message-input">
-                            <Input
-                                allowClear
-                                placeholder="Aa"
-                                style={{ flexGrow: 1 }}
-                                onPressEnter={handleSubmit} />
-                            <Button icon={<SendOutlined />} onClick={handleSubmit} />
-                        </Space.Compact>
+                        <Input.TextArea className="message-input"
+                            allowClear
+                            placeholder="Aa"
+                            autoFocus={false}
+                            autoSize={{ maxRows: 5 }}
+                            style={{ flexGrow: 1 }}
+                            onPressEnter={handleEnterPress} />
                     </Form.Item>
                     <Form.Item name="model" initialValue={model}>
                         <Select className="model-select"
@@ -89,6 +100,9 @@ export const Chat = (props: ChatProps) => {
                             <Select.Option value="openai">GPT 3.5</Select.Option>
                         </Select>
                     </Form.Item>
+                    <Button
+                        icon={<SendOutlined />}
+                        onClick={handleSubmit} />
                 </Form>
             </Flex>
         </Flex>

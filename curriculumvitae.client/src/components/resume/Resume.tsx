@@ -11,17 +11,17 @@ import "./Resume.css";
 
 const tabItems: TabsProps['items'] = [
     {
-        key: "1",
+        key: "experiences",
         label: <div id="experiences">Experiences</div>,
         children: <Experiences />,
     },
     {
-        key: "2",
+        key: "education",
         label: <div id="education">Education</div>,
         children: <Education />,
     },
     {
-        key: "3",
+        key: "skills",
         label: <div id="skills">Skills</div>,
         children: <SkillsDashbord />,
     }
@@ -30,7 +30,6 @@ const tabItems: TabsProps['items'] = [
 export const Resume = () => {
 
     const isSmallScreen = useMediaQuery({ maxWidth: 768 });
-
     const {
         data: about,
         loading

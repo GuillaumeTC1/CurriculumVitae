@@ -3,7 +3,7 @@ import { Chat } from "@/components/chat/Chat";
 
 export type ChatSiderProps = {
     open: boolean;
-    onCloseButtonClick?: () => void;
+    onBackButtonClick?: () => void;
 }
 
 export const ChatSider = (props: ChatSiderProps) => {
@@ -18,7 +18,7 @@ export const ChatSider = (props: ChatSiderProps) => {
             collapsedWidth={0}
             width="30%"
             style={{ background: colorBgContainer }}>
-            <Chat onCloseButtonClick={props.onCloseButtonClick} />
+            <Chat onBackButtonClick={props.onBackButtonClick} />
         </Layout.Sider>
     );
 }

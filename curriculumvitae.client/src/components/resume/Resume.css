@@ -4,6 +4,7 @@
 }
 
 .ant-collapse-header {
+    padding: 0 16px !important;
     align-items: center !important;
 }
 
