@@ -3,6 +3,7 @@ using CurriculumVitae.Server.Services.Chat;
 using CurriculumVitae.Server.Services.Identity;
 using CurriculumVitae.Server.Services.Mail;
 using CurriculumVitae.Server.Services.Resume;
+using Microsoft.AspNetCore.Rewrite;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +34,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseSwagger();
+
+app.UseRewriter(new RewriteOptions()
+    .AddRedirectToWwwPermanent());
 
 #region Map Endpoints
 
