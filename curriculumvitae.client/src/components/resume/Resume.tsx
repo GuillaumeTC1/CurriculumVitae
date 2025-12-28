@@ -1,31 +1,11 @@
 import axios from "axios";
-import { Avatar, Divider, Flex, Spin, Tabs, TabsProps, Typography } from "antd";
-import { Education } from "./Education";
-import { Experiences } from "./Experiences";
-import { CvTour } from "./CvTour";
+import { Avatar, Divider, Flex, Spin, Typography } from "antd";
+import { ResumeTour } from "./ResumeTour";
 import { useAsync } from "@/hooks/useAsync";
-import { AboutModel } from "./models/AboutModel";
-import { SkillsDashbord } from "@/components/skills/SkillsDashboard";
 import { useMediaQuery } from "react-responsive";
+import { ResumeTimeline } from "./ResumeTimeline";
+import { AboutModel } from "./resume.types";
 import "./Resume.css";
-
-const tabItems: TabsProps['items'] = [
-    {
-        key: "experiences",
-        label: <div id="experiences">Experiences</div>,
-        children: <Experiences />,
-    },
-    {
-        key: "education",
-        label: <div id="education">Education</div>,
-        children: <Education />,
-    },
-    {
-        key: "skills",
-        label: <div id="skills">Skills</div>,
-        children: <SkillsDashbord />,
-    }
-];
 
 export const Resume = () => {
 
@@ -63,9 +43,9 @@ export const Resume = () => {
                     {about!.description}
                 </Typography.Text>
                 <Divider style={{ margin: 8 }} />
-                <Tabs items={tabItems} />
+                <ResumeTimeline />
             </Flex>
-            <CvTour />
+            <ResumeTour />
         </>
     );
 }    

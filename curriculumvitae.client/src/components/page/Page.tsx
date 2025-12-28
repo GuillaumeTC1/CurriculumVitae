@@ -1,5 +1,7 @@
 import { Head } from "@/components/page/Head";
 import { ErrorPage } from "./ErrorPage";
+import { NotFoundPage } from "./NotFoundPage";
+import { LoadingPage } from "./LoadingPage";
 import "./Page.css"
 
 export type PageProps = {
@@ -18,3 +20,5 @@ export const Page = (props: PageProps) => {
 }
 
 Page.Error = ErrorPage;
+Page.Loading = LoadingPage;
+Page.NotFound = NotFoundPage;

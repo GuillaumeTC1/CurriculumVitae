@@ -4,10 +4,22 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [react()],
+    plugins: [
+        react()
+    ],
     build: {
         emptyOutDir: true,
-        outDir: "../CurriculumVitae.Server/wwwroot"
+        outDir: "../CurriculumVitae.Server/wwwroot",
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    antd: [
+                        "antd",
+                        "@ant-design/icons"
+                    ]
+                }
+            }
+        }
     },
     resolve: {
         alias: {
