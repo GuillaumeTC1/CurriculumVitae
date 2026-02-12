@@ -9,7 +9,7 @@ public interface IExperiencesService
 }
 
 internal class ExperiencesService(
-    MyDbContext dbContext) : IExperiencesService
+    AppDbContext dbContext) : IExperiencesService
 {
     public async Task<IEnumerable<ExperiencesModel>> GetExperiencesAsync()
     {

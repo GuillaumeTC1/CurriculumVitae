@@ -9,7 +9,7 @@ public interface IAboutService
 }
 
 internal class AboutService(
-    MyDbContext dbContext) : IAboutService
+    AppDbContext dbContext) : IAboutService
 {
     public async Task<AboutModel> GetAboutAsync()
     {
