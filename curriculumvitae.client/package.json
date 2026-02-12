@@ -12,8 +12,6 @@
   "dependencies": {
     "@ant-design/icons": "6.1.0",
     "antd": "6.3.0",
-    "axios": "1.13.5",
-    "clsx": "2.1.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-responsive": "10.0.1",

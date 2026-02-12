@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Button, Flex, Form, Input, Select } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { SendOutlined } from "@ant-design/icons";
@@ -47,8 +46,15 @@ export const Chat = (props: ChatProps) => {
         setLoading(true);
 
         // Send the prompt to the chat API
-        axios.post<string>("/chat", { model, userMessage })
-            .then(response => setResponse(response.data))
+        fetch("/chat", {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify({ model, userMessage })
+        })
+            .then(response => response.text())
+            .then(chatResponse => setResponse(chatResponse))
             .finally(() => setLoading(false));
     }
 

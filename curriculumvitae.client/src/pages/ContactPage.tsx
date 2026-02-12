@@ -1,7 +1,6 @@
 import { useAuthContext } from "@/components/auth/context";
 import { Page } from "@/components/page/Page";
 import { Button, Form, Input, Space, notification } from "antd";
-import axios from "axios";
 import { useState } from "react";
 
 const ContactPage = () => {
@@ -19,7 +18,13 @@ const ContactPage = () => {
         setLoading(true); // Set loading to display loading animation while API is responding
 
         // Send the prompt to the chat API
-        axios.post<string>("/mail", { content })
+        fetch("/mail", {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify({ content })
+        })
             .then(_ => {
                 notificationApi.success({
                     message: "Message Sent",

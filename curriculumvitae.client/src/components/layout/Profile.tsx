@@ -1,14 +1,13 @@
 import { useAuthContext } from '@/components/auth/context';
 import { Button, Flex, Popover } from 'antd';
 import Avatar from 'antd/es/avatar/Avatar';
-import axios from 'axios';
 
 export const Profile = () => {
 
     const authContext = useAuthContext();
 
     const handleLogout = () => {
-        axios.post("/auth/logout")
+        fetch("/auth/logout", { method: "POST" })
             .then(() => window.location.reload())
     }
 
