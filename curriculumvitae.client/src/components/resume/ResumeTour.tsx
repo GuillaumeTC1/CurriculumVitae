@@ -3,21 +3,20 @@ import { useRefById } from "@/hooks/useRefById";
 import { Tour, TourProps } from "antd";
 import { useState } from "react";
 
-export type CvTourProps = {}
+export type ResumeTourProps = {}
 
-const cvTourStorageKey = "CvTourShow";
+const tourStorageKey = "gtc-net:resume-tour";
 
-export const CvTour = (_: CvTourProps) => {
+export const ResumeTour = (_: ResumeTourProps) => {
 
-    const showTour: boolean = JSON.parse(localStorage.getItem(cvTourStorageKey) ?? "true");
-
+    const showTour: boolean = JSON.parse(localStorage.getItem(tourStorageKey) ?? "true");
     var authContex = useAuthContext();
 
     var [tourOpen, setTourOpen] = useState(showTour ? true : false);
 
     const closeTour = () => {
         setTourOpen(false);
-        localStorage.setItem(cvTourStorageKey, "false");
+        localStorage.setItem(tourStorageKey, "false");
     }
 
     // var infoRef = useRefById("info");
@@ -28,7 +27,7 @@ export const CvTour = (_: CvTourProps) => {
 
     const steps: TourProps['steps'] = [
         {
-            title: 'Welcome abroad!',
+            title: 'Welcome aboard!',
             description: `Hey ${authContex.user?.given_name}, nice to see here.`
         },
         {

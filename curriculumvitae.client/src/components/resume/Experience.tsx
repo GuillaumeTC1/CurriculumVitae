@@ -1,7 +1,7 @@
 import { Flex, Typography } from "antd";
-import { CvCard } from "./CvCard";
-import { ExperienceModel } from "./models/ExperienceModel";
+import { CvCard } from "./ResumeCard";
 import { DateRange } from "./DateRange";
+import { ExperienceModel } from "./resume.types";
 
 export type ExperienceProps = ExperienceModel & {}
 

@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS base
+FROM mcr.microsoft.com/dotnet/aspnet:10.0-alpine AS base
 EXPOSE 8081
 ENV HTTPS_PORTS=8081
 
@@ -9,7 +9,7 @@ WORKDIR "/src/curriculumvitae.client"
 RUN npm ci \
     npm run build
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS server-build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS server-build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY . .

@@ -13,7 +13,7 @@ public static class DependencyInjection
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddDbContext<MyDbContext>(options =>
+        services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql(
                 configuration.GetConnectionString("Database")));
 
@@ -21,8 +21,8 @@ public static class DependencyInjection
     }
 }
 
-public class MyDbContext(
-    DbContextOptions<MyDbContext> options)
+public class AppDbContext(
+    DbContextOptions<AppDbContext> options)
     : DbContext(options)
 {
     public DbSet<EducationEntity> Education { get; set; }

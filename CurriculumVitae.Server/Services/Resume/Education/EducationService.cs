@@ -9,7 +9,7 @@ public interface IEducationService
 }
 
 internal class EducationService(
-    MyDbContext dbContext) : IEducationService
+    AppDbContext dbContext) : IEducationService
 {
     public async Task<IEnumerable<EducationModel>> GetEducationAsync()
     {

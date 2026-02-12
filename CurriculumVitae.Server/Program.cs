@@ -3,7 +3,7 @@ using CurriculumVitae.Server.Services.Chat;
 using CurriculumVitae.Server.Services.Identity;
 using CurriculumVitae.Server.Services.Mail;
 using CurriculumVitae.Server.Services.Resume;
-using Scalar.AspNetCore;
+using Microsoft.AspNetCore.Rewrite;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +19,7 @@ builder.Services.AddMailServices(builder.Configuration);
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddControllers();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
@@ -32,11 +32,14 @@ app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseSwagger();
+app.MapOpenApi();
+
+app.UseRewriter(new RewriteOptions()
+    .AddRedirectToWwwPermanent());
 
 #region Map Endpoints
 
-app.MapScalarApiReference(options => options.OpenApiRoutePattern = "swagger/v1/swagger.json");
+app.MapOpenApiExplorerUI();
 
 app.MapControllers();
 

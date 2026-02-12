@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Options;
-using Microsoft.Security.Application;
 using System.Net.Mail;
 
 namespace CurriculumVitae.Server.Services.Mail;
@@ -36,7 +35,7 @@ internal class MailService : IMailService
         {
             IsBodyHtml = true,
             Subject = $"CurriculumVitae - <{fromMail}>",
-            Body = $"<body>{Sanitizer.GetSafeHtml(body)}</body>"
+            Body = $"<body>{HtmlSanitizer.Sanitize(body)}</body>"
         };
 
         try
