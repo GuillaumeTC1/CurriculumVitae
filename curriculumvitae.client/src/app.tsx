@@ -11,7 +11,6 @@ import './App.css';
 
 export const App = () => {
     return (
-
         <AuthProvider>
             <Router>
                 <Routes>
@@ -21,10 +20,7 @@ export const App = () => {
                         <Route path="/privacy" element={<PrivacyPage />} />
                         <Route path="/chat" element={<ChatPage />} />
                         <Route path="/login" element={<LoginPage />} />
-                        <Route path="*" element={
-                            <Page.Error
-                                statusCode={404}
-                                message="Page Not Found" />} />
+                        <Route path="*" element={<Page.NotFound />} />
                     </Route>
                 </Routes>
             </Router>

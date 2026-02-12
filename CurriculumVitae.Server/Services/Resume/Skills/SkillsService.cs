@@ -9,7 +9,7 @@ public interface ISkillsService
 }
 
 internal class SkillsService(
-    MyDbContext dbContext) : ISkillsService
+    AppDbContext dbContext) : ISkillsService
 {
     public async Task<IEnumerable<SkillsModel>> GetSkillsAsync()
     {

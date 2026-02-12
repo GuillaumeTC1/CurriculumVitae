@@ -5,8 +5,8 @@ import { MenuSider } from "./MenuSider";
 import { ChatSider } from "./ChatSider";
 import { LayoutHeader } from "./LayoutHeader";
 import { MainContent } from "./MainContent";
-import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 import "./Layout.css";
 
 export const Layout = () => {
