@@ -5,6 +5,8 @@ using System.Security.Claims;
 
 namespace CurriculumVitae.Server.Controllers;
 
+// TODO: Implement proper authentication and authorization, this is just a placeholder for now to get the user information from the token and log it in the database.
+
 [ApiController]
 [Route("[controller]")]
 [Authorize]
@@ -18,13 +20,13 @@ public class AuthController(
     {
         var user = new UserModel()
         {
-            Name = User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Name)?.Value,
-            GivenName = User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.GivenName)?.Value,
-            Surname = User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Surname)?.Value,
-            Email = User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Email)?.Value,
-            EmailVerified = User.Claims.FirstOrDefault(claim => claim.Type == "email_verified")?.Value,
-            Picture = User.Claims.FirstOrDefault(claim => claim.Type == "picture")?.Value,
-            Locale = User.Claims.FirstOrDefault(claim => claim.Type == "locale")?.Value,
+            Name = User.FindFirstValue(ClaimTypes.Name),
+            GivenName = User.FindFirstValue(ClaimTypes.GivenName),
+            Surname = User.FindFirstValue(ClaimTypes.Surname),
+            Email = User.FindFirstValue(ClaimTypes.Email),
+            EmailVerified = User.FindFirstValue("email_verified"),
+            Picture = User.FindFirstValue("picture"),
+            Locale = User.FindFirstValue("locale"),
         };
 
         return user;
@@ -33,10 +35,7 @@ public class AuthController(
     [HttpPost("login")]
     public ActionResult Login()
     {
-        logger.LogInformation(
-            "{} has signed in with {}.",
-            User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Name)?.Value,
-            User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Email)?.Value);
+        logger.LogUserSignIn(User.FindFirstValue(ClaimTypes.Name), User.FindFirstValue(ClaimTypes.Email));
 
         return SignIn(User);
     }
@@ -60,4 +59,10 @@ public class AuthController(
     {
         return Redirect($"https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78x5jlbcl09xi1&redirect_uri=https://{HttpContext.Request.Host}/auth/callback&scope=openid%20profile");
     }
+}
+
+static partial class LoggerExtensions
+{
+    [LoggerMessage(Level = LogLevel.Information, Message = "{name} has signed in with {email}.")]
+    public static partial void LogUserSignIn(this ILogger<AuthController> logger, string name, string email);
 }
