@@ -12,13 +12,17 @@
 }
 
 .main-content {
-    padding: 0 24px 24px 24px;
+    padding: 24px;
 }
 
 .layout-button {
     color: white;
     border: 0;
 }
+
+    .layout-button:hover {
+        border: unset !important;
+    }
 
 .menu-button {
     height: 100%;

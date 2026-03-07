@@ -1,5 +1,5 @@
 import { useAuthContext } from '@/components/auth/context';
-import { Button, Flex, Popover } from 'antd';
+import { Button, Flex, Popover, Typography } from 'antd';
 import Avatar from 'antd/es/avatar/Avatar';
 
 export const Profile = () => {
@@ -29,9 +29,10 @@ export const Profile = () => {
         <Popover
             placement="bottomRight"
             content={
-                <Flex vertical>
-                    <span>{authContext.user!.given_name} {authContext.user!.surname}</span>
-                    <span>{authContext.user!.email}</span>
+                <Flex vertical
+                    gap="small">
+                    <Typography.Text>{authContext.user!.given_name} {authContext.user!.surname}</Typography.Text>
+                    <Typography.Text>{authContext.user!.email}</Typography.Text>
                     <Button onClick={handleLogout}>Logout</Button>
                 </Flex>
             }>

@@ -7,6 +7,6 @@ export const NotFoundPage = (_: NotFoundPageProps) => {
     return (
         <ErrorPage
             statusCode={404}
-            message="Page Not Found" />
+            message="Sorry, the page you visited does not exist." />
     );
 }

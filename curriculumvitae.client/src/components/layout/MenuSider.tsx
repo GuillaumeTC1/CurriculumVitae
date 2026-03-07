@@ -1,7 +1,8 @@
-import { HomeOutlined, MailOutlined, SafetyOutlined } from "@ant-design/icons";
+import { HomeOutlined, MailOutlined, SafetyOutlined, SolutionOutlined } from "@ant-design/icons";
 import { Menu, Layout, theme } from "antd";
+import { useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export type MenuSiderProps = {
     open: boolean;
@@ -12,6 +13,7 @@ export const MenuSider = (props: MenuSiderProps) => {
 
     const isSmallScreen = useMediaQuery({ maxWidth: 768 });
 
+    const location = useLocation()
     const navigate = useNavigate();
     const {
         token: { colorBgContainer },
@@ -30,8 +32,11 @@ export const MenuSider = (props: MenuSiderProps) => {
             style={{ background: colorBgContainer }}>
             <Menu
                 mode="inline"
+                selectedKeys={[location.pathname]}
+                selectable={true}
                 onClick={handleMenuItemClick}>
                 <Menu.Item key="/" icon={<HomeOutlined />}>Home</Menu.Item>
+                <Menu.Item key="/resume" icon={<SolutionOutlined />}>Resume</Menu.Item>
                 <Menu.Item key="/contact" icon={<MailOutlined />}>Contact</Menu.Item>
                 <Menu.Item key="/privacy" icon={<SafetyOutlined />}>Privacy</Menu.Item>
             </Menu>
