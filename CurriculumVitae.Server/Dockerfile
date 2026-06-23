@@ -2,12 +2,11 @@ FROM mcr.microsoft.com/dotnet/aspnet:10.0-alpine AS base
 EXPOSE 8081
 ENV HTTPS_PORTS=8081
 
-FROM node:20 AS client-build
+FROM node:24 AS client-build
 WORKDIR /src
 COPY . .
 WORKDIR "/src/curriculumvitae.client"
-RUN npm ci \
-    npm run build
+RUN npm ci && npm run build
 
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS server-build
 ARG BUILD_CONFIGURATION=Release
