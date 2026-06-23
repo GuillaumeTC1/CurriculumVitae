@@ -9,17 +9,7 @@ export default defineConfig({
     ],
     build: {
         emptyOutDir: true,
-        outDir: "../CurriculumVitae.Server/wwwroot",
-        rollupOptions: {
-            output: {
-                manualChunks: {
-                    antd: [
-                        "antd",
-                        "@ant-design/icons"
-                    ]
-                }
-            }
-        }
+        outDir: "../CurriculumVitae.Server/wwwroot"
     },
     resolve: {
         alias: {
