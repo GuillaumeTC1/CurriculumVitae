@@ -1,6 +1,5 @@
 import { HomeOutlined, MailOutlined, SafetyOutlined, SolutionOutlined } from "@ant-design/icons";
 import { Menu, Layout, theme } from "antd";
-import { useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useLocation, useNavigate } from "react-router-dom";
 
